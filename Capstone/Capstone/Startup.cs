@@ -19,10 +19,10 @@ namespace Capstone
         {
             ApplicationDbContext context = new ApplicationDbContext();
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
-            if (!roleManager.RoleExists("Visitor"))
+            if (!roleManager.RoleExists("Member"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Visitor";
+                role.Name = "Member";
                 roleManager.Create(role);
             }
             if (!roleManager.RoleExists("Admin"))
