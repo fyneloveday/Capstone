@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
+using Microsoft.AspNet.Identity;
 
 namespace Capstone.Controllers
 {
@@ -17,22 +18,28 @@ namespace Capstone.Controllers
         // GET: MemberModels
         public ActionResult Index()
         {
-            return View(db.MemberModels.ToList());
+            var newMember = User.Identity.GetUserId();
+            return View(newMember);
         }
 
         // GET: MemberModels/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int id)
         {
             if (id == null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                return View("Index");
             }
-            MemberModel memberModel = db.MemberModels.Find(id);
-            if (memberModel == null)
+            MemberModel member = db.MemberModels.Find(id);
+            if (member == null)
             {
                 return HttpNotFound();
             }
-            return View(memberModel);
+            else
+            {
+                return View(member);
+
+            }
+
         }
 
         // GET: MemberModels/Create
