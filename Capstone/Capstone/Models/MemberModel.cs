@@ -10,11 +10,22 @@ namespace Capstone.Models
     {
         [Key]
         public int ID { get; set; }
+        [Required]
         [Display(Name = "First Name")]
         public string FirstName { get; set; }
+        [Display(Name = "Middle Name")]
+        public string MiddleName { get; set; }
+        [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
         public string Password { get; set; }
+        public int Age { get; set; }
+        public string Gender { get; set; }
+        public DateTime MemberSince { get; set; }
+        [Display(Name = "Favorite Book")]
+        public string FavoriteBook { get; set; }
+        [Display(Name = "About Yourself")]
+        public string AboutYourself { get; set; }
 
     }
 }
