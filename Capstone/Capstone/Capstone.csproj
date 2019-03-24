@@ -176,6 +176,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\MemberModelsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -186,6 +187,10 @@
     <Compile Include="Migrations\201903240443268_MemberUpdate.cs" />
     <Compile Include="Migrations\201903240443268_MemberUpdate.Designer.cs">
       <DependentUpon>201903240443268_MemberUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903240553593_MemberUpdate1.cs" />
+    <Compile Include="Migrations\201903240553593_MemberUpdate1.Designer.cs">
+      <DependentUpon>201903240553593_MemberUpdate1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -251,6 +256,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\MemberModels\Create.cshtml" />
+    <Content Include="Views\MemberModels\Delete.cshtml" />
+    <Content Include="Views\MemberModels\Details.cshtml" />
+    <Content Include="Views\MemberModels\Edit.cshtml" />
+    <Content Include="Views\MemberModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -274,6 +284,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903240443268_MemberUpdate.resx">
       <DependentUpon>201903240443268_MemberUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903240553593_MemberUpdate1.resx">
+      <DependentUpon>201903240553593_MemberUpdate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
