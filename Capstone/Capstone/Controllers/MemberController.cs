@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 
@@ -21,13 +22,18 @@ namespace Capstone.Controllers
         // GET: Member/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            if(id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var members = db.MemberModels.SingleOrDefault();
+            return View(members);
         }
 
         // GET: Member/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            var members = db.MemberModels.
+            var members = db.MemberModels.Find(id);
             return View();
         }
 
