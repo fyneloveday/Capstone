@@ -69,7 +69,7 @@ namespace Capstone.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        [Required]
+        //[Required]
         [Display(Name = "UserRole")]
         public string UserRole { get; set; }
 
