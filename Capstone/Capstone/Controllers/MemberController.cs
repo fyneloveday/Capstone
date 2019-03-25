@@ -33,24 +33,21 @@ namespace Capstone.Controllers
         // GET: Member/Create
         public ActionResult Create(int id)
         {
-            var members = db.MemberModels.Find(id);
             return View();
         }
 
         // POST: Member/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(MemberModel member)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-
+                db.MemberModels.Add(member);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View (member);
         }
 
         // GET: Member/Edit/5
