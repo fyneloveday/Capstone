@@ -11,7 +11,7 @@ namespace Capstone.Controllers
 {
     public class MemberController : Controller
     {
-        private ApplicationDbContext db = new ApplicationDbContext;
+        private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Member
         public ActionResult Index()
@@ -79,23 +79,28 @@ namespace Capstone.Controllers
         // GET: Member/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            MemberModel member = db.MemberModels.Find(id);
+            if (member == null)
+            {
+                return HttpNotFound();
+            }
+            return View(member);
         }
 
         // POST: Member/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+                MemberModel member = db.MemberModels.Find(id);
+                db.MemberModels.Remove(member);
+                db.SaveChanges();
+                return RedirectToAction("Index");          
+        }
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
         }
     }
 }
