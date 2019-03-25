@@ -196,6 +196,10 @@
     <Compile Include="Migrations\201903242242377_LatestUpdate.Designer.cs">
       <DependentUpon>201903242242377_LatestUpdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903250319314_LatestUpdate1.cs" />
+    <Compile Include="Migrations\201903250319314_LatestUpdate1.Designer.cs">
+      <DependentUpon>201903250319314_LatestUpdate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -261,6 +265,9 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Member\Details.cshtml" />
+    <Content Include="Views\Member\Create.cshtml" />
+    <Content Include="Views\Member\Edit.cshtml" />
+    <Content Include="Views\Member\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -290,6 +297,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903242242377_LatestUpdate.resx">
       <DependentUpon>201903242242377_LatestUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903250319314_LatestUpdate1.resx">
+      <DependentUpon>201903250319314_LatestUpdate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
