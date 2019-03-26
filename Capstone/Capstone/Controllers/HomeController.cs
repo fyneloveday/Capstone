@@ -51,9 +51,9 @@ namespace Capstone.Controllers
                 WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EmailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
                 ViewBag.status = "Email Sent Successfully.";
         }
-            catch (Exception)
+            catch 
             {
-                ViewBag.Status = "Problem while sending email, Please check details.";
+            ViewBag.Status = "Problem while sending email, Please check details.";
             }
             return View();
             }
