@@ -11,9 +11,6 @@ namespace Capstone.Models
         [DataType(DataType.EmailAddress), Display(Name = "To")]
         [Required]
         public string ToEmail { get; set; }
-        [Display(Name = "Body")]
-        [DataType(DataType.MultilineText)]
-        public string EmailBody { get; set; }
         [Display(Name = "Subject")]
         public string EmailSubject { get; set; }
         [DataType(DataType.EmailAddress)]
@@ -21,6 +18,9 @@ namespace Capstone.Models
         public string EmailCC { get; set; }
         [DataType(DataType.EmailAddress)]
         [Display(Name = "BCC")]
-        public string EmailBCC { get; set; } 
+        public string EmailBCC { get; set; }
+        [Display(Name = "Body")]
+        [DataType(DataType.MultilineText)]
+        public string EmailBody { get; set; }
     }
 }
