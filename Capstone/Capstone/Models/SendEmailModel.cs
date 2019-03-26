@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Capstone.Models
 {
-    public class MemberEmail
+    public class SendEmailModel
     {
         [DataType(DataType.EmailAddress), Display(Name = "To")]
         [Required]
@@ -16,6 +16,9 @@ namespace Capstone.Models
         public string EmailBody { get; set; }
         [Display(Name = "Subject")]
         public string EmailSubject { get; set; }
+        [DataType(DataType.EmailAddress)]
+        [Display(Name = "CC")]
+        public string EmailCC { get; set; }
         [DataType(DataType.EmailAddress)]
         [Display(Name = "BCC")]
         public string EmailBCC { get; set; } 
