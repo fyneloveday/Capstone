@@ -222,8 +222,13 @@
     <Compile Include="Migrations\201903261848241_DbUpdate1.Designer.cs">
       <DependentUpon>201903261848241_DbUpdate1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903262218372_DbUpdate2.cs" />
+    <Compile Include="Migrations\201903262218372_DbUpdate2.Designer.cs">
+      <DependentUpon>201903262218372_DbUpdate2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BookEntryModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SendEmailModel.cs" />
@@ -333,6 +338,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903261848241_DbUpdate1.resx">
       <DependentUpon>201903261848241_DbUpdate1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903262218372_DbUpdate2.resx">
+      <DependentUpon>201903262218372_DbUpdate2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
