@@ -231,6 +231,14 @@
     <Compile Include="Migrations\201903271625297_AddToDb.Designer.cs">
       <DependentUpon>201903271625297_AddToDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903272055355_AddToDb1.cs" />
+    <Compile Include="Migrations\201903272055355_AddToDb1.Designer.cs">
+      <DependentUpon>201903272055355_AddToDb1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903272210282_AddToDb2.cs" />
+    <Compile Include="Migrations\201903272210282_AddToDb2.Designer.cs">
+      <DependentUpon>201903272210282_AddToDb2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -303,6 +311,7 @@
     <Content Include="Views\Member\Edit.cshtml" />
     <Content Include="Views\Member\Delete.cshtml" />
     <Content Include="Views\Home\SendEmail.cshtml" />
+    <Content Include="Views\BookAPI\GetBestsellerFromApi.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -350,6 +359,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903271625297_AddToDb.resx">
       <DependentUpon>201903271625297_AddToDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903272055355_AddToDb1.resx">
+      <DependentUpon>201903272055355_AddToDb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903272210282_AddToDb2.resx">
+      <DependentUpon>201903272210282_AddToDb2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

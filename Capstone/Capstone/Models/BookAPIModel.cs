@@ -13,7 +13,7 @@ namespace Capstone.Models
         public string Title { get; set; }
         public string Author { get; set; }
         public string Publisher { get; set; }
-        public int ISBN { get; set; }
+        public string ISBN { get; set; }
         public string Synopsis { get; set; }
     }
 }
