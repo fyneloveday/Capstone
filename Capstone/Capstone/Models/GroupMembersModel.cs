@@ -7,20 +7,13 @@ using System.Web;
 
 namespace Capstone.Models
 {
-    public class GroupModel
+    public class GroupMembersModel
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        [Display(Name = "Group Name")]
-        public string GroupName { get; set; }
-        [Display(Name = "Description")]
-        public string Description { get; set; }
-        [Display(Name = "Rules")]
-        public string Rules { get; set; } 
         [ForeignKey("MemberModel")]
-        public int? MemberModelId { get; set; }
+        public int GroupAdmin { get; set; }
         public MemberModel MemberModel { get; set; }
-
+        public List<MemberModel> GroupMembers { get; set; }
     }
 }
