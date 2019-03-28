@@ -239,10 +239,15 @@
     <Compile Include="Migrations\201903272210282_AddToDb2.Designer.cs">
       <DependentUpon>201903272210282_AddToDb2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903281414376_DbUpdate3.cs" />
+    <Compile Include="Migrations\201903281414376_DbUpdate3.Designer.cs">
+      <DependentUpon>201903281414376_DbUpdate3.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
     <Compile Include="Models\BookEntryModel.cs" />
+    <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SendEmailModel.cs" />
@@ -366,6 +371,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903272210282_AddToDb2.resx">
       <DependentUpon>201903272210282_AddToDb2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903281414376_DbUpdate3.resx">
+      <DependentUpon>201903281414376_DbUpdate3.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
