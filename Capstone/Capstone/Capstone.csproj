@@ -312,6 +312,7 @@
     <Content Include="Views\Member\Delete.cshtml" />
     <Content Include="Views\Home\SendEmail.cshtml" />
     <Content Include="Views\BookAPI\GetBestsellerFromApi.cshtml" />
+    <Content Include="Views\Member\BookEntrySubmission.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

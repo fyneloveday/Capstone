@@ -102,5 +102,26 @@ namespace Capstone.Controllers
             db.Dispose();
             base.Dispose(disposing);
         }
+
+        public ActionResult BookEntrySubmission()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult BookEntrySubmission(BookEntryModel newBook)
+        {
+           if (ModelState.IsValid)
+            {
+                db.bookEntryModels.Add(newBook);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(newBook);
+            }
+        }
     }
 }
