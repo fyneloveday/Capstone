@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201903282109311_DbUpdate4.Designer.cs">
       <DependentUpon>201903282109311_DbUpdate4.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903291547259_getDb.cs" />
+    <Compile Include="Migrations\201903291547259_getDb.Designer.cs">
+      <DependentUpon>201903291547259_getDb.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -324,7 +328,7 @@
     <Content Include="Views\Home\SendEmail.cshtml" />
     <Content Include="Views\BookAPI\GetBestsellerFromApi.cshtml" />
     <Content Include="Views\Member\BookEntrySubmission.cshtml" />
-    <Content Include="Views\Member\CreateGroup.cshtml" />
+    <Content Include="Views\GroupAdmin\CreateGroup.cshtml" />
     <Content Include="Views\GroupAdmin\Create.cshtml" />
     <Content Include="Views\GroupAdmin\Delete.cshtml" />
     <Content Include="Views\GroupAdmin\Details.cshtml" />
@@ -389,6 +393,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903282109311_DbUpdate4.resx">
       <DependentUpon>201903282109311_DbUpdate4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903291547259_getDb.resx">
+      <DependentUpon>201903291547259_getDb.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

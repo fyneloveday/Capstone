@@ -38,7 +38,7 @@ namespace Capstone.Controllers
         }
 
         // GET: GroupAdmin/Create
-        public ActionResult CreateGroup(int id)
+        public ActionResult CreateGroup()
         {
             return View();
         }
@@ -57,11 +57,11 @@ namespace Capstone.Controllers
                 newGroup.MemberModelId = makeAdmin;
                 db.GroupModels.Add(newGroup);
                 db.SaveChanges();
-                return View("Index", "GroupAdmin");
+                return View(newGroup);
             }
             catch
             {
-                return View(newGroup);
+                return View();
             }
         }
 
