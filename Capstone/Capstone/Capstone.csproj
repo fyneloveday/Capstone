@@ -185,6 +185,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookAPIController.cs" />
+    <Compile Include="Controllers\GroupAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MemberController.cs" />
@@ -324,6 +325,11 @@
     <Content Include="Views\BookAPI\GetBestsellerFromApi.cshtml" />
     <Content Include="Views\Member\BookEntrySubmission.cshtml" />
     <Content Include="Views\Member\CreateGroup.cshtml" />
+    <Content Include="Views\GroupAdmin\Create.cshtml" />
+    <Content Include="Views\GroupAdmin\Delete.cshtml" />
+    <Content Include="Views\GroupAdmin\Details.cshtml" />
+    <Content Include="Views\GroupAdmin\Edit.cshtml" />
+    <Content Include="Views\GroupAdmin\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
