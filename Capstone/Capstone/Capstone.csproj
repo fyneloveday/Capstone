@@ -334,6 +334,7 @@
     <Content Include="Views\GroupAdmin\Details.cshtml" />
     <Content Include="Views\GroupAdmin\Edit.cshtml" />
     <Content Include="Views\GroupAdmin\Index.cshtml" />
+    <Content Include="Views\Member\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
