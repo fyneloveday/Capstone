@@ -125,28 +125,6 @@ namespace Capstone.Controllers
             }
         }
 
-        public ActionResult CreateGroup(int id)
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult CreateGroup(GroupModel newGroup)
-        {
-           try
-            {
-                // the user that is logged in is the AdminPersonID
-                var newAdmin = User.Identity.GetUserId();
-                var makeAdmin = db.MemberModels.Where(m => m.ApplicationUserId == newAdmin).FirstOrDefault().ID;
-                newGroup.MemberModelId = makeAdmin;
-                db.GroupModels.Add(newGroup);
-                db.SaveChanges();
-                return View("Index", "GroupAdmin");
-            }
-            catch
-            {
-                return View(newGroup);
-            }
-        }
+        
     }
 }
