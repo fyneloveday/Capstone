@@ -1,4 +1,5 @@
 ﻿using Capstone.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -113,7 +114,7 @@ namespace Capstone.Controllers
         {
            if (ModelState.IsValid)
             {
-                db.bookEntryModels.Add(newBook);
+                db.BookEntryModels.Add(newBook);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");
@@ -121,6 +122,30 @@ namespace Capstone.Controllers
             else
             {
                 return View(newBook);
+            }
+        }
+
+        public ActionResult CreateGroup(int id)
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CreateGroup(GroupModel newGroup)
+        {
+           try
+            {
+                // the user that is logged in is the AdminPersonID
+                var newAdmin = User.Identity.GetUserId();
+                var makeAdmin = db.MemberModels.Where(m => m.ApplicationUserId == newAdmin).FirstOrDefault().ID;
+                newGroup.MemberModelId = makeAdmin;
+                db.GroupModels.Add(newGroup);
+                db.SaveChanges();
+                return View("Index", "GroupAdmin");
+            }
+            catch
+            {
+                return View(newGroup);
             }
         }
     }

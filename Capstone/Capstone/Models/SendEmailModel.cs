@@ -8,6 +8,8 @@ namespace Capstone.Models
 {
     public class SendEmailModel
     {
+        [Key]
+        public int Id { get; set; }
         [DataType(DataType.EmailAddress), Display(Name = "To")]
         [Required]
         public string ToEmail { get; set; }

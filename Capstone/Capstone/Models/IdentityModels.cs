@@ -32,7 +32,11 @@ namespace Capstone.Models
         }
 
         public System.Data.Entity.DbSet<Capstone.Models.MemberModel> MemberModels { get; set; }
-        public DbSet<BookAPIModel> bookAPIModels { get; set; }
-        public DbSet<BookEntryModel> bookEntryModels { get; set; }
+        public DbSet<BookAPIModel> BookAPIModels { get; set; }
+        public DbSet<BookEntryModel> BookEntryModels { get; set; }
+        public DbSet<GroupMembersModel> GroupMembersModels { get; set; }
+        public DbSet<GroupModel> GroupModels { get; set; }
+       // public DbSet<MemberModel> memberModels { get; set; }
+        public DbSet<SendEmailModel> SendEmailModels { get; set; }
     }
 }

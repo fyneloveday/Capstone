@@ -62,7 +62,7 @@ namespace Capstone.Controllers
                             ISBN = isbn,
                             Synopsis = description,
                         };
-                        db.bookAPIModels.Add(newBook);
+                        db.BookAPIModels.Add(newBook);
                         currentBestsellers.Add(newBook);
                         db.SaveChanges();
                         

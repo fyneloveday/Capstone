@@ -19,7 +19,7 @@ namespace Capstone.Models
         [Display(Name = "Rules")]
         public string Rules { get; set; } 
         [ForeignKey("MemberModel")]
-        public int? MemberModelId { get; set; }
+        public int MemberModelId { get; set; }
         public MemberModel MemberModel { get; set; }
 
     }
