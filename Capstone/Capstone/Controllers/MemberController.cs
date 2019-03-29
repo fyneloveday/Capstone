@@ -68,13 +68,16 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(MemberModel member)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(member).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(member);
+            var memberInDb = db.MemberModels.Single(m => m.ID == member.ID);
+            memberInDb.FirstName = member.FirstName;
+            memberInDb.MiddleName = member.MiddleName;
+            memberInDb.LastName = member.LastName;
+            memberInDb.Email = member.Email;
+            memberInDb.FavoriteBook = member.FavoriteBook;
+            memberInDb.AboutYourself = member.AboutYourself;
+            db.SaveChanges();
+
+            return RedirectToAction("Index", "Member");
         }
 
         // GET: Member/Delete/5
