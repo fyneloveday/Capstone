@@ -252,6 +252,14 @@
     <Compile Include="Migrations\201903291547259_getDb.Designer.cs">
       <DependentUpon>201903291547259_getDb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201903292103361_getDb1.cs" />
+    <Compile Include="Migrations\201903292103361_getDb1.Designer.cs">
+      <DependentUpon>201903292103361_getDb1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201903292114119_getDb2.cs" />
+    <Compile Include="Migrations\201903292114119_getDb2.Designer.cs">
+      <DependentUpon>201903292114119_getDb2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -397,6 +405,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201903291547259_getDb.resx">
       <DependentUpon>201903291547259_getDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903292103361_getDb1.resx">
+      <DependentUpon>201903292103361_getDb1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201903292114119_getDb2.resx">
+      <DependentUpon>201903292114119_getDb2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

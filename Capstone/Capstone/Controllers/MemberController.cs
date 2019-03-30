@@ -33,7 +33,7 @@ namespace Capstone.Controllers
         }
 
         // GET: Member/Create
-        public ActionResult Create(int id)
+        public ActionResult Create()
         {
             return View();
         }
@@ -43,13 +43,18 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(MemberModel member)
         {
-            if (ModelState.IsValid)
+           if (ModelState.IsValid)
             {
+                var loggedMember = db.MemberModels.Single(m => m.ID == member.ID);
                 db.MemberModels.Add(member);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+               return RedirectToAction("Index", "Member");
             }
-            return View (member);
+            else
+            {
+                return View(member);
+            }
+            
         }
 
         // GET: Member/Edit/5
