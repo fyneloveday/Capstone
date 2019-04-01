@@ -70,6 +70,10 @@ namespace Capstone.Controllers
                 }
             }
             return View("GetBestsellerFromApi", currentBestsellers);
+
+
+           // public async Task<ActionResult> GetBookDetailsWithAPI
+
         }
     }
 }

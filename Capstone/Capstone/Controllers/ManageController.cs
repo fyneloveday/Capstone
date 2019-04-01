@@ -7,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Capstone.Models;
+using System.Web.Helpers;
 
 namespace Capstone.Controllers
 {
@@ -334,7 +335,37 @@ namespace Capstone.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+
+        public ActionResult SendEmail()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SendEmail(SendEmailModel obj)
+        {
+            try
+            {
+                WebMail.SmtpServer = "smtp.gmail.com";
+                WebMail.SmtpPort = 587;
+                WebMail.SmtpUseDefaultCredentials = true;
+                WebMail.EnableSsl = true;
+                WebMail.UserName = "fynecode@gmail.com";
+                WebMail.Password = "codemaster";
+
+                WebMail.From = "fynecode@gmail.com";
+
+                WebMail.Send(to: obj.ToEmail, subject: obj.EmailSubject, body: obj.EmailBody, cc: obj.EmailCC, bcc: obj.EmailBCC, isBodyHtml: true);
+                ViewBag.status = "Email Sent Successfully.";
+            }
+            catch
+            {
+                ViewBag.Status = "Problem while sending email, Please check details.";
+            }
+            return View();
+        }
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 
