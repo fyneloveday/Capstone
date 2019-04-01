@@ -133,6 +133,26 @@ namespace Capstone.Controllers
             }
         }
 
-        
+        public ActionResult CurrentlyReading()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult CurrentlyReading(BookEntryModel newBook)
+        {
+            if (ModelState.IsValid)
+            {
+                db.BookEntryModels.Add(newBook);
+                db.SaveChanges();
+
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(newBook);
+            }
+        }
+
     }
 }

@@ -36,7 +36,7 @@ namespace Capstone.Models
         public DbSet<BookEntryModel> BookEntryModels { get; set; }
         public DbSet<GroupMembersModel> GroupMembersModels { get; set; }
         public DbSet<GroupModel> GroupModels { get; set; }
-       // public DbSet<MemberModel> memberModels { get; set; }
+        public DbSet<CurrentlyReadingModel> CurrentlyReadingModels { get; set; }
         public DbSet<SendEmailModel> SendEmailModels { get; set; }
     }
 }
