@@ -26,37 +26,44 @@
         <th>
             @Html.DisplayNameFor(model => model.Synopsis)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>*@
         <th><img src="http://books.google.com/books/content?id=yDtbBJQ4of8C&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE711H9iy6igjXPrjmZTi4WJklaPhsEqLv8Sbg_ijfmxWp_V2FHjUa8QqSRMsRcAA7P58XK003sjThpkwZuWrntuU4relb9c0dqGu2sIjq0o6K4XpJYtXRRKzv1bUVX1mSc9btLjT&source=gbs_api" /></th>
     </tr>
 
     @foreach (var item in Model)
     {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Publisher)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ISBN)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Synopsis)
-            </td>
-            <th><img src="http://books.google.com/books/content?id=tcSMCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api&key=AIzaSyCGLb8F7CAkFUWVMVlowMQywW42e571Z7k" /></th>
-        
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Author)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Publisher)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ISBN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Synopsis)
+        </td>
+        @*<td>
+           @{using (Html.BeginForm())
+               {
+                   for(int i = 0; i < 10; i++)
+                   {
+                       <input type="radio" id="Rank" name="Rank" value="@i"/> @i
+                   }
+                   <input type="submit" value="Submit"/>
+               }
 
-
-    @*<td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+           }
         </td>*@
-    </tr >
-    }
-
+        <th><img src="http://books.google.com/books/content?id=tcSMCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api&key=AIzaSyCGLb8F7CAkFUWVMVlowMQywW42e571Z7k" /></th>
+        </tr>
+        }
+    
 </table>

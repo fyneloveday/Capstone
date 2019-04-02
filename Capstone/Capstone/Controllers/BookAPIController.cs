@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using Microsoft.AspNet.Identity;
 
 namespace Capstone.Controllers
 {
@@ -84,7 +85,27 @@ namespace Capstone.Controllers
             //{
 
             //}
-
+                       
         }
+
+        public ActionResult BookRating()
+        {
+            return View();
+        }
+
+        public ActionResult BookRating(int ratedBookId, int rank)
+        {
+            BookEntryModel rating = new BookEntryModel();
+            rating.Rating = rank;
+            rating.ID = ratedBookId;
+            rating.ApplicationUserId = User.Identity.GetUserId();
+
+            db.BookEntryModels.Add(rating);
+            db.SaveChanges();
+
+            return RedirectToAction("Details", "Member", new { id = ratedBookId });
+        }
+
     }
+
 }

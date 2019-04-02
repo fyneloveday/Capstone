@@ -32,6 +32,7 @@ namespace Capstone.Models
         public string FavoriteBook { get; set; }
         [Display(Name = "About Yourself")]
         public string AboutYourself { get; set; }
+        public List<BookAPIModel> BookRating { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
