@@ -41,38 +41,49 @@ namespace Capstone.Controllers
             {
                 using (var request = new HttpRequestMessage(new HttpMethod("GET"), "https://api.nytimes.com/svc/books/v3/lists.json?list=hardcover-fiction&published-date=2019-03-27&api-key=61cHxzn3reL5IVuycznI8dnRqobCBnhB"))
                 {
-                    request.Headers.TryAddWithoutValidation("Accept", "application/json");
-
-                    var response = await httpClient.SendAsync(request);
-                    var stringResult = await response.Content.ReadAsStringAsync();
-                    var json = JObject.Parse(stringResult);
-                    for (int i = 0; i < json["results"].Count(); i++)
+                    using (var coverArt = new HttpRequestMessage(new HttpMethod("GET"), "https://www.googleapis.com/books/v1/volumes?q=jquery&Key=AIzaSyCGLb8F7CAkFUWVMVlowMQywW42e571Z7k"))
                     {
-                        var title = json["results"][i]["book_details"][0]["title"].ToString();
-                        var author = json["results"][i]["book_details"][0]["author"].ToString();
-                        var publisher = json["results"][i]["book_details"][0]["publisher"].ToString();
-                        var isbn = json["results"][i]["book_details"][0]["primary_isbn13"].ToString();
-                        var description = json["results"][i]["book_details"][0]["description"].ToString();
+                        request.Headers.TryAddWithoutValidation("Accept", "application/json");
 
-                        BookAPIModel newBook = new BookAPIModel()
+                        var response = await httpClient.SendAsync(request);
+                        var response2 = await httpClient.SendAsync(coverArt);
+                        var stringResult = await response.Content.ReadAsStringAsync();
+                        var stringResult2 = await response2.Content.ReadAsStringAsync();
+                        var json = JObject.Parse(stringResult);
+                        var json2 = JObject.Parse(stringResult2);
+                        for (int i = 0; i < json["results"].Count(); i++)
+           
                         {
-                            Title = title,
-                            Author = author,
-                            Publisher = publisher,
-                            ISBN = isbn,
-                            Synopsis = description,
-                        };
-                        db.BookAPIModels.Add(newBook);
-                        currentBestsellers.Add(newBook);
-                        db.SaveChanges();
-                        
+                            var title = json["results"][i]["book_details"][0]["title"].ToString();
+                            var author = json["results"][i]["book_details"][0]["author"].ToString();
+                            var publisher = json["results"][i]["book_details"][0]["publisher"].ToString();
+                            var isbn = json["results"][i]["book_details"][0]["primary_isbn13"].ToString();
+                            var description = json["results"][i]["book_details"][0]["description"].ToString();
+                            var imgString = json2["items"][1]["volumeInfo"]["imageLinks"]["thumbnail"];
+
+                            BookAPIModel newBook = new BookAPIModel()
+                            {
+                                Title = title,
+                                Author = author,
+                                Publisher = publisher,
+                                ISBN = isbn,
+                                Synopsis = description,
+                            };
+                            db.BookAPIModels.Add(newBook);
+                            currentBestsellers.Add(newBook);
+                            db.SaveChanges();
+
+                        }
                     }
                 }
             }
             return View("GetBestsellerFromApi", currentBestsellers);
 
 
-           // public async Task<ActionResult> GetBookDetailsWithAPI
+            //public async Task<ActionResult> GetBookDetailsWithAPI()
+            //{
+
+            //}
 
         }
     }

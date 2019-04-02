@@ -264,6 +264,22 @@
     <Compile Include="Migrations\201904010205321_DbUpdate5.Designer.cs">
       <DependentUpon>201904010205321_DbUpdate5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904011407069_DbUpdate6.cs" />
+    <Compile Include="Migrations\201904011407069_DbUpdate6.Designer.cs">
+      <DependentUpon>201904011407069_DbUpdate6.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904011506453_DbUpdate7.cs" />
+    <Compile Include="Migrations\201904011506453_DbUpdate7.Designer.cs">
+      <DependentUpon>201904011506453_DbUpdate7.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904011526403_DbUpdate8.cs" />
+    <Compile Include="Migrations\201904011526403_DbUpdate8.Designer.cs">
+      <DependentUpon>201904011526403_DbUpdate8.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904011621428_DbUpdate9.cs" />
+    <Compile Include="Migrations\201904011621428_DbUpdate9.Designer.cs">
+      <DependentUpon>201904011621428_DbUpdate9.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -419,6 +435,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904010205321_DbUpdate5.resx">
       <DependentUpon>201904010205321_DbUpdate5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011407069_DbUpdate6.resx">
+      <DependentUpon>201904011407069_DbUpdate6.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011506453_DbUpdate7.resx">
+      <DependentUpon>201904011506453_DbUpdate7.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011526403_DbUpdate8.resx">
+      <DependentUpon>201904011526403_DbUpdate8.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904011621428_DbUpdate9.resx">
+      <DependentUpon>201904011621428_DbUpdate9.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

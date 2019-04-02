@@ -19,9 +19,11 @@ namespace Capstone.Models
         [Required]
         [Display(Name = "Last Name")]
         public string LastName { get; set; }
-        [Required]
-        [Display(Name = "Email")]
-        public string Email { get; set; }
+
+        //[Required]
+        //[Display(Name = "Email")]
+        //public string Email { get; set; }
+
         public string Password { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }

@@ -43,9 +43,11 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(MemberModel member)
         {
-           if (ModelState.IsValid)
+            member.ApplicationUserId = User.Identity.GetUserId();
+
+            if (ModelState.IsValid)
             {
-                var loggedMember = db.MemberModels.Single(m => m.ID == member.ID);
+                var loggedMember = db.MemberModels.Where(m => m.ID == member.ID);
                 db.MemberModels.Add(member);
                 db.SaveChanges();
                return RedirectToAction("Index", "Member");
@@ -77,7 +79,7 @@ namespace Capstone.Controllers
             memberInDb.FirstName = member.FirstName;
             memberInDb.MiddleName = member.MiddleName;
             memberInDb.LastName = member.LastName;
-            memberInDb.Email = member.Email;
+           // memberInDb.Email = member.Email;
             memberInDb.FavoriteBook = member.FavoriteBook;
             memberInDb.AboutYourself = member.AboutYourself;
             db.SaveChanges();
