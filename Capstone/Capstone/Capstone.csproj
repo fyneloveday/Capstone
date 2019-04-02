@@ -294,6 +294,14 @@
     <Compile Include="Migrations\201904021854387_DbUpdate12.Designer.cs">
       <DependentUpon>201904021854387_DbUpdate12.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904022101206_DbUpdate13.cs" />
+    <Compile Include="Migrations\201904022101206_DbUpdate13.Designer.cs">
+      <DependentUpon>201904022101206_DbUpdate13.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904022133581_DbUpdate14.cs" />
+    <Compile Include="Migrations\201904022133581_DbUpdate14.Designer.cs">
+      <DependentUpon>201904022133581_DbUpdate14.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -416,6 +424,8 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\GroupAdmin\Members.cshtml" />
+    <Content Include="Views\Member\CurrentlyReading.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -500,6 +510,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904021854387_DbUpdate12.resx">
       <DependentUpon>201904021854387_DbUpdate12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904022101206_DbUpdate13.resx">
+      <DependentUpon>201904022101206_DbUpdate13.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904022133581_DbUpdate14.resx">
+      <DependentUpon>201904022133581_DbUpdate14.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -18,8 +18,8 @@ namespace Capstone.Controllers
         // GET: GroupAdmin
         public ActionResult Index()
         {
-            var groupModels = db.GroupModels.Include(g => g.MemberModel);
-            return View(groupModels.ToList());
+            var groupModels = db.GroupModels.ToList();
+            return View(groupModels);
         }
 
         // GET: GroupAdmin/Details/5
@@ -54,7 +54,7 @@ namespace Capstone.Controllers
                 // the user that is logged in is the AdminPersonID
                 var newAdmin = User.Identity.GetUserId();
                 var makeAdmin = db.MemberModels.Where(m => m.ApplicationUserId == newAdmin).FirstOrDefault().ID;
-                newGroup.MemberModelId = makeAdmin;
+                newGroup.GroupAdminId = makeAdmin;
                 db.GroupModels.Add(newGroup);
                 db.SaveChanges();
                 return View(newGroup);
@@ -77,7 +77,7 @@ namespace Capstone.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MemberModelId = new SelectList(db.MemberModels, "ID", "FirstName", groupModel.MemberModelId);
+            ViewBag.MemberModelId = new SelectList(db.MemberModels, "ID", "FirstName", groupModel.GroupAdminId);
             return View(groupModel);
         }
 
@@ -94,7 +94,7 @@ namespace Capstone.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MemberModelId = new SelectList(db.MemberModels, "ID", "FirstName", groupModel.MemberModelId);
+            ViewBag.MemberModelId = new SelectList(db.MemberModels, "ID", "FirstName", groupModel.GroupAdminId);
             return View(groupModel);
         }
 

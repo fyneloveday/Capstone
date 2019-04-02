@@ -18,9 +18,9 @@ namespace Capstone.Models
         public string Description { get; set; }
         [Display(Name = "Rules")]
         public string Rules { get; set; } 
-        [ForeignKey("MemberModel")]
-        public int MemberModelId { get; set; }
-        public MemberModel MemberModel { get; set; }
-
+        public int GroupAdminId { get; set; }
+    
+        [ForeignKey("GroupAdminId")]
+        public virtual MemberModel MemberModel { get; set; }
     }
 }
