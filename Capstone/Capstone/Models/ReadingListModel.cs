@@ -20,9 +20,9 @@ namespace Capstone.Models
         [Required]
         [Display(Name = "Author Last Name")]
         public string AuthorLastName { get; set; }
-        [Range(0, 9)]
-        [Display(Name = "Rating")]
-        public int Rating { get; set; }
+        //[Range(0, 9)]
+        //[Display(Name = "Rating")]
+        //public int Rating { get; set; }
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }

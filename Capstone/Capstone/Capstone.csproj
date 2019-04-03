@@ -306,6 +306,26 @@
     <Compile Include="Migrations\201904030025023_DbUpdate15.Designer.cs">
       <DependentUpon>201904030025023_DbUpdate15.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904030104393_DbUpdate16.cs" />
+    <Compile Include="Migrations\201904030104393_DbUpdate16.Designer.cs">
+      <DependentUpon>201904030104393_DbUpdate16.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904030134310_DbUpdate17.cs" />
+    <Compile Include="Migrations\201904030134310_DbUpdate17.Designer.cs">
+      <DependentUpon>201904030134310_DbUpdate17.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904030209017_DbUpdate18.cs" />
+    <Compile Include="Migrations\201904030209017_DbUpdate18.Designer.cs">
+      <DependentUpon>201904030209017_DbUpdate18.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904030310124_DbUpdate19.cs" />
+    <Compile Include="Migrations\201904030310124_DbUpdate19.Designer.cs">
+      <DependentUpon>201904030310124_DbUpdate19.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904030755545_DbUpdate20.cs" />
+    <Compile Include="Migrations\201904030755545_DbUpdate20.Designer.cs">
+      <DependentUpon>201904030755545_DbUpdate20.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -328,6 +348,7 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\DigitalBookClubBootstrap.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -429,7 +450,9 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\GroupAdmin\Members.cshtml" />
-    <Content Include="Views\Member\CurrentlyReading.cshtml" />
+    <Content Include="Views\Member\ReadingList.cshtml" />
+    <Content Include="Views\Member\ReadingListIndex.cshtml" />
+    <Content Include="Views\Member\ReadingListDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -523,6 +546,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904030025023_DbUpdate15.resx">
       <DependentUpon>201904030025023_DbUpdate15.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904030104393_DbUpdate16.resx">
+      <DependentUpon>201904030104393_DbUpdate16.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904030134310_DbUpdate17.resx">
+      <DependentUpon>201904030134310_DbUpdate17.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904030209017_DbUpdate18.resx">
+      <DependentUpon>201904030209017_DbUpdate18.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904030310124_DbUpdate19.resx">
+      <DependentUpon>201904030310124_DbUpdate19.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904030755545_DbUpdate20.resx">
+      <DependentUpon>201904030755545_DbUpdate20.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

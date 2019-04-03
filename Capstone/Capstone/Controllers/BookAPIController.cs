@@ -88,23 +88,23 @@ namespace Capstone.Controllers
                        
         }
 
-        public ActionResult BookRating()
-        {
-            return View();
-        }
+        //public ActionResult BookRating()
+        //{
+        //    return View();
+        //}
 
-        public ActionResult BookRating(int ratedBookId, int rank)
-        {
-            BookEntryModel rating = new BookEntryModel();
-            rating.Rating = rank;
-            rating.ID = ratedBookId;
-            rating.ApplicationUserId = User.Identity.GetUserId();
+        //public ActionResult BookRating(int ratedBookId, int rank)
+        //{
+        //    ReadingListModel rating = new ReadingListModel();
+        //    rating.Rating = rank;
+        //    rating.ID = ratedBookId;
+        //    rating.ApplicationUserId = User.Identity.GetUserId();
 
-            db.BookEntryModels.Add(rating);
-            db.SaveChanges();
+        //    db.ReadingListModels.Add(rating);
+        //    db.SaveChanges();
 
-            return RedirectToAction("Details", "Member", new { id = ratedBookId });
-        }
+        //    return RedirectToAction("ReadingList", "Member", new { id = ratedBookId });
+        //}
 
     }
 

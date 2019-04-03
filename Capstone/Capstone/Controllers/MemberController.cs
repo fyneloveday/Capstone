@@ -136,26 +136,79 @@ namespace Capstone.Controllers
             }
         }
 
-        public ActionResult CurrentlyReading()
+        public ActionResult ReadingListIndex()
+        {
+            var newList = db.ReadingListModels.ToList();
+            return View(newList);
+        }
+
+        public ActionResult ReadingList()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult CurrentlyReading(ReadingListModel newBook)
+        public ActionResult ReadingList(ReadingListModel newBook)
         {
             if (ModelState.IsValid)
             {
                 db.ReadingListModels.Add(newBook);
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("ReadingListIndex");
             }
             else
             {
                 return View(newBook);
             }
         }
+
+        // GET: Member/Delete/5
+        public ActionResult DeleteBook(int id)
+        {
+            ReadingListModel erasedBook = db.ReadingListModels.Find(id);
+            if (erasedBook == null)
+            {
+                return HttpNotFound();
+            }
+            return View(erasedBook);
+        }
+
+        // POST: Member/Delete/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult BookDeleted(int id)
+        {
+            ReadingListModel erasedBook = db.ReadingListModels.SingleOrDefault(r => r.ID == id);
+            db.ReadingListModels.Remove(erasedBook);
+            db.SaveChanges();
+            var erasedBooks = db.ReadingListModels.ToList();
+
+            return View("ReadingListIndex", erasedBook);
+        }
+        //protected override void Dispose(bool disposing)
+        //{
+        //    db.Dispose();
+        //    base.Dispose(disposing);
+        //}
+
+        //public ActionResult BookRating()
+        //{
+        //    return View();
+        //}
+
+        //public ActionResult BookRating(int ratedBook, int rank)
+        //{
+        //    ReadingListModel rating = new ReadingListModel();
+        //    rating.Rating = rank;
+        //    rating.ID = ratedBook;
+        //    rating.ApplicationUserId = User.Identity.GetUserId();
+
+        //    db.ReadingListModels.Add(rating);
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("ReadingList");//, "Member", new { id = ratedBookId });
+        //}
 
     }
 }

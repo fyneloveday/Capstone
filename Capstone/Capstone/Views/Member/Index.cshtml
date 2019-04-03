@@ -61,35 +61,38 @@
         @*<td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>*@
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Password)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.Age)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Gender)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.MemberSince)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.FavoriteBook)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.AboutYourself)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ApplicationUserId)
-        </td>
+        </td>*@
+        
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
             @Html.ActionLink("Create Group", "CreateGroup", "GroupAdmin") |
             @Html.ActionLink("Reading List", "CurrentlyReading", "Member") |
+
         </td>
     </tr>
+
 }
 
 </table>
