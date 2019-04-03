@@ -142,11 +142,11 @@ namespace Capstone.Controllers
         }
 
         [HttpPost]
-        public ActionResult CurrentlyReading(BookEntryModel newBook)
+        public ActionResult CurrentlyReading(ReadingListModel newBook)
         {
             if (ModelState.IsValid)
             {
-                db.BookEntryModels.Add(newBook);
+                db.ReadingListModels.Add(newBook);
                 db.SaveChanges();
 
                 return RedirectToAction("Index");

@@ -302,6 +302,10 @@
     <Compile Include="Migrations\201904022133581_DbUpdate14.Designer.cs">
       <DependentUpon>201904022133581_DbUpdate14.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904030025023_DbUpdate15.cs" />
+    <Compile Include="Migrations\201904030025023_DbUpdate15.Designer.cs">
+      <DependentUpon>201904030025023_DbUpdate15.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -311,6 +315,7 @@
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\ReadingListModel.cs" />
     <Compile Include="Models\SendEmailModel.cs" />
     <Compile Include="Models\MemberModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -407,7 +412,6 @@
     <Content Include="Views\Member\Delete.cshtml" />
     <Content Include="Views\Home\SendEmail.cshtml" />
     <Content Include="Views\BookAPI\GetBestsellerFromApi.cshtml" />
-    <Content Include="Views\Member\BookEntrySubmission.cshtml" />
     <Content Include="Views\GroupAdmin\CreateGroup.cshtml" />
     <Content Include="Views\GroupAdmin\Create.cshtml" />
     <Content Include="Views\GroupAdmin\Delete.cshtml" />
@@ -516,6 +520,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904022133581_DbUpdate14.resx">
       <DependentUpon>201904022133581_DbUpdate14.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904030025023_DbUpdate15.resx">
+      <DependentUpon>201904030025023_DbUpdate15.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
