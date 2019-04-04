@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<Capstone.Models.BookAPIModel>
 
 @{
-    ViewBag.Title = "GetBestsellerFromApi";
+    ViewBag.Title = "Today's New York Times Bestseller";
 }
 
 <h2>GetBestsellerFromApi</h2>
@@ -29,7 +29,7 @@
         @*<th>
             @Html.DisplayNameFor(model => model.Rating)
         </th>*@
-        <th><img src="http://books.google.com/books/content?id=yDtbBJQ4of8C&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE711H9iy6igjXPrjmZTi4WJklaPhsEqLv8Sbg_ijfmxWp_V2FHjUa8QqSRMsRcAA7P58XK003sjThpkwZuWrntuU4relb9c0dqGu2sIjq0o6K4XpJYtXRRKzv1bUVX1mSc9btLjT&source=gbs_api" /></th>
+        @*<th><img src="http://books.google.com/books/content?id=yDtbBJQ4of8C&printsec=frontcover&img=1&zoom=1&edge=curl&imgtk=AFLRE711H9iy6igjXPrjmZTi4WJklaPhsEqLv8Sbg_ijfmxWp_V2FHjUa8QqSRMsRcAA7P58XK003sjThpkwZuWrntuU4relb9c0dqGu2sIjq0o6K4XpJYtXRRKzv1bUVX1mSc9btLjT&source=gbs_api" /></th>*@
     </tr>
 
     @foreach (var item in Model)
@@ -62,7 +62,7 @@
 
            }
         </td>*@
-        <th><img src="http://books.google.com/books/content?id=tcSMCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api&key=AIzaSyCGLb8F7CAkFUWVMVlowMQywW42e571Z7k" /></th>
+        @*<th><img src="http://books.google.com/books/content?id=tcSMCwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api&key=AIzaSyCGLb8F7CAkFUWVMVlowMQywW42e571Z7k" /></th>*@
         </tr>
         }
     

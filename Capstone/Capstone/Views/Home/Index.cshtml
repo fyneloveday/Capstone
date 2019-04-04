@@ -3,8 +3,8 @@
 }
 
 <div class="jumbotron">
-    <h1>The Digital Book Club</h1>
-    <p class="lead">The premier home for readers and writers</p>
+    <center><h1>The Digital Book Club</h1></center>
+    <center><p class="lead">The premier home for readers and writers</p></center>
 </div>
 
 <div class="row">
@@ -13,11 +13,16 @@
         <p>
             With the group feature, you get to create, or join up any group that fits your kind of taste. Gather with like minds and feel at home.
         </p>
-        <p><a class="btn btn-default"  @Html.ActionLink("Member Groups", "Index", "GroupAdmin")>&raquo;</a></p>>Learn more &raquo;</a></p>
+        <p><a class="btn btn-default" @Html.ActionLink("Member Groups", "Index", "GroupAdmin")>&raquo;</a></p>>Learn more &raquo;</a></p>
     </div>
     <div class="col-md-4">
         <h2>Hot Off The Shelves</h2>
         <p>Check out the current New York Times Bestsellers to see what people are reading and talking about the most. Very good conversation starters for the connections you make here.</p>
         <p><a class="btn btn-default" @Html.ActionLink("Bestsellers", "GetBestsellerFromApi", "BookAPI")>&raquo;</a></p>
     </div>
+    @*<div class="col-md-4">
+        <h2>Hot Off The Shelves</h2>
+        <p>We know it's almost impossible, but it does happen. Found a written gem not in our application? Submit it here, and we will add it in after verification.</p>
+        <p><a class="btn btn-default" @Html.ActionLink("Book Submissions", "BookEntrySubmissionIndex", "Member")>&raquo;</a></p>
+    </div>*@
 </div>

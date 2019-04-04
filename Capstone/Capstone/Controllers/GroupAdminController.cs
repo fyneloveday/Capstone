@@ -49,7 +49,11 @@ namespace Capstone.Controllers
         [HttpPost]
         public ActionResult CreateGroup(GroupModel newGroup)
         {
-            try
+            if (User.Identity == null)
+            {
+                return RedirectToAction("Register", "Account");
+            }
+            else if (ModelState.IsValid)
             {
                 // the user that is logged in is the AdminPersonID
                 var newAdmin = User.Identity.GetUserId();
@@ -59,7 +63,7 @@ namespace Capstone.Controllers
                 db.SaveChanges();
                 return View(newGroup);
             }
-            catch
+            else
             {
                 return View();
             }

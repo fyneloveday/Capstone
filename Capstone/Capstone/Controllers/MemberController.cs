@@ -115,7 +115,13 @@ namespace Capstone.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult BookEntrySubmission()
+        public ActionResult BookEntrySubmissionIndex()
+        {
+            var newEntry = db.BookEntryModels.ToList();
+            return View();
+        }
+
+         public ActionResult BookEntrySubmission()
         {
             return View();
         }
@@ -128,7 +134,7 @@ namespace Capstone.Controllers
                 db.BookEntryModels.Add(newBook);
                 db.SaveChanges();
 
-                return RedirectToAction("Index");
+                return RedirectToAction("BookEntrySubmissionIndex");
             }
             else
             {
@@ -186,6 +192,8 @@ namespace Capstone.Controllers
 
             return View("ReadingListIndex", erasedBook);
         }
+
+        
         //protected override void Dispose(bool disposing)
         //{
         //    db.Dispose();
