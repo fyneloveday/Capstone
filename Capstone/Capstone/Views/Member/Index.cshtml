@@ -39,6 +39,9 @@
             @Html.DisplayNameFor(model => model.FavoriteBook)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.CurrentlyReading)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.AboutYourself)
         </th>
         @*<th>
@@ -77,16 +80,19 @@
             @Html.DisplayFor(modelItem => item.FavoriteBook)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.CurrentlyReading)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.AboutYourself)
         </td>
         @*<td>
             @Html.DisplayFor(modelItem => item.ApplicationUserId)
         </td>*@
-        
+
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID }) |
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID }) |
             @Html.ActionLink("Create Group", "CreateGroup", "GroupAdmin") |
             @Html.ActionLink("Reading List", "CurrentlyReading", "Member") |
 

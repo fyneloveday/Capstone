@@ -82,10 +82,11 @@ namespace Capstone.Controllers
             memberInDb.LastName = member.LastName;
            // memberInDb.Email = member.Email;
             memberInDb.FavoriteBook = member.FavoriteBook;
+            memberInDb.CurrentlyReading = member.CurrentlyReading;
             memberInDb.AboutYourself = member.AboutYourself;
             db.SaveChanges();
 
-            return RedirectToAction("Index", "Member");
+            return RedirectToAction("Index");
         }
 
         // GET: Member/Delete/5
