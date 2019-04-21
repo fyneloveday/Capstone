@@ -30,6 +30,8 @@ namespace Capstone.Models
         public DateTime MemberSince { get; set; }
         [Display(Name = "Favorite Book")]
         public string FavoriteBook { get; set; }
+        [Display(Name = "Currently Reading")]
+        public string CurrentlyReading { get; set; }
         [Display(Name = "About Yourself")]
         public string AboutYourself { get; set; }
         public List<BookAPIModel> BookRating { get; set; }

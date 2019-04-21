@@ -330,6 +330,10 @@
     <Compile Include="Migrations\201904031521335_DbUbdate.Designer.cs">
       <DependentUpon>201904031521335_DbUbdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904210552422_DbUpdate21.cs" />
+    <Compile Include="Migrations\201904210552422_DbUpdate21.Designer.cs">
+      <DependentUpon>201904210552422_DbUpdate21.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -570,6 +574,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904031521335_DbUbdate.resx">
       <DependentUpon>201904031521335_DbUbdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904210552422_DbUpdate21.resx">
+      <DependentUpon>201904210552422_DbUpdate21.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

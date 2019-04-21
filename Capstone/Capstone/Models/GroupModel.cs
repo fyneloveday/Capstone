@@ -17,7 +17,9 @@ namespace Capstone.Models
         [Display(Name = "Description")]
         public string Description { get; set; }
         [Display(Name = "Rules")]
-        public string Rules { get; set; } 
+        public string Rules { get; set; }
+        [Display(Name = "Reading Assignment")]
+        public string ReadingAssignment { get; set; }
         public int GroupAdminId { get; set; }
     
         [ForeignKey("GroupAdminId")]
