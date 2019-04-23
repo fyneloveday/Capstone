@@ -27,6 +27,7 @@ namespace Capstone.Models
         [Required]
         [Display(Name = "Publisher")]
         public string Publisher { get; set; }
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Synopsis")]
         public string Synopsis { get; set; }
         [Range(0, 9)]
@@ -37,4 +38,5 @@ namespace Capstone.Models
         public ApplicationUser ApplicationUser { get; set; }
 
     }
+
 }

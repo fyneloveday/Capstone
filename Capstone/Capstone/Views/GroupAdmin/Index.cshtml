@@ -21,11 +21,15 @@
             @Html.DisplayNameFor(model => model.Rules)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.ReadingAssignment)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.GroupAdminId)
         </th>
     </tr>
 
 @foreach (var item in Model) {
+    
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.GroupName)
@@ -37,13 +41,16 @@
             @Html.DisplayFor(modelItem => item.Rules)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.ReadingAssignment)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.GroupAdminId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
             @Html.ActionLink("Details", "Details", new { id = item.Id }) |
             @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |
-            @Html.ActionLink("contact Member", "SendEmail", "Manage") |
+            @Html.ActionLink("Join Group", "JoinGroup", "Member")
 
         </td>
     </tr>

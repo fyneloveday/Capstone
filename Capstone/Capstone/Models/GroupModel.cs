@@ -20,9 +20,9 @@ namespace Capstone.Models
         public string Rules { get; set; }
         [Display(Name = "Reading Assignment")]
         public string ReadingAssignment { get; set; }
-        public int GroupAdminId { get; set; }
     
-        [ForeignKey("GroupAdminId")]
+        [ForeignKey("MemberModel")]
+        public int GroupAdminId { get; set; }
         public virtual MemberModel MemberModel { get; set; }
     }
 }

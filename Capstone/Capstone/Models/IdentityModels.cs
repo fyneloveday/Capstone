@@ -21,6 +21,14 @@ namespace Capstone.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        public DbSet<MemberModel> MemberModels { get; set; }
+        public DbSet<BookAPIModel> BookAPIModels { get; set; }
+        public DbSet<BookEntryModel> BookEntryModels { get; set; }
+        // public DbSet<GroupMembersModel> GroupMembersModels { get; set; }
+        public DbSet<GroupModel> GroupModels { get; set; }
+        public DbSet<CurrentlyReadingModel> CurrentlyReadingModels { get; set; }
+        public DbSet<SendEmailModel> SendEmailModels { get; set; }
+        public DbSet<ReadingListModel> ReadingListModels { get; set; }
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
@@ -31,13 +39,5 @@ namespace Capstone.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<Capstone.Models.MemberModel> MemberModels { get; set; }
-        public DbSet<BookAPIModel> BookAPIModels { get; set; }
-        public DbSet<BookEntryModel> BookEntryModels { get; set; }
-        public DbSet<GroupMembersModel> GroupMembersModels { get; set; }
-        public DbSet<GroupModel> GroupModels { get; set; }
-        public DbSet<CurrentlyReadingModel> CurrentlyReadingModels { get; set; }
-        public DbSet<SendEmailModel> SendEmailModels { get; set; }
-        public DbSet<ReadingListModel> ReadingListModels { get; set; }
     }
 }

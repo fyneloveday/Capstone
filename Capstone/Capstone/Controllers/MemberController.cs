@@ -6,6 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
+using System.Web.Helpers;
 using System.Web.Mvc;
 
 namespace Capstone.Controllers
@@ -116,6 +117,24 @@ namespace Capstone.Controllers
             base.Dispose(disposing);
         }
 
+        public ActionResult JoinGroup(int? Id)
+        {
+            var groupToJoin = db.GroupModels.Find(Id);
+            return View(groupToJoin);
+        }
+
+        [HttpPost]
+        public ActionResult JoinGroup(MemberModel newMember)
+        {
+           newMember.ApplicationUserId = User.Identity.GetUserId();
+            var becomeMember = User.Identity.GetUserId();
+            GroupModel groupToJoin = new GroupModel();
+            db.MemberModels.Add(newMember);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+
         public ActionResult BookEntrySubmissionIndex()
         {
             var newEntry = db.BookEntryModels.ToList();
@@ -130,14 +149,35 @@ namespace Capstone.Controllers
         [HttpPost]
         public ActionResult BookEntrySubmission(BookEntryModel newBook)
         {
-           if (ModelState.IsValid)
-            {
-                db.BookEntryModels.Add(newBook);
-                db.SaveChanges();
+            //try
+            //{
+            //    WebMail.SmtpServer = "smtp.gmail.com";
+            //    WebMail.SmtpPort = 587;
+            //    WebMail.SmtpUseDefaultCredentials = true;
+            //    WebMail.EnableSsl = true;
+            //    WebMail.UserName = db.Users.Select(u => u.Email).ToString();                //"fynecode@gmail.com";
+            //    WebMail.Password = db.Users.Select(u => u.PasswordHash).ToString();               //"codemaster"; 
 
-                return RedirectToAction("BookEntrySubmissionIndex");
-            }
-            else
+            //    WebMail.From = db.Users.Select(u => u.Email).ToString();                   //"";
+
+            //    WebMail.Send(to: "fynecode@gmail.com", title: newBook.Title, firstName: newBook.AuthorFirstName, middleName: newBook.AuthorMiddleName, lastName: newBook.AuthorLastName, yearPublished: newBook.YearPublished, isbn: newBook.ISBN, publisher: newBook.Publisher, synopsis: newBook.Synopsis, rating: newBook.Rating, isBodyHtml: true);
+            //    ViewBag.status = "Email Sent Successfully.";
+            //}
+            //catch
+            //{
+            //    ViewBag.Status = "Problem while sending email, Please check details.";
+            //}
+            //return View();
+
+
+            //if (ModelState.IsValid)
+            // {
+            //     db.BookEntryModels.Add(newBook);
+            //     db.SaveChanges();
+
+            //     return RedirectToAction("BookEntrySubmissionIndex");
+            // }
+            // else
             {
                 return View(newBook);
             }
@@ -193,6 +233,17 @@ namespace Capstone.Controllers
 
             return View("ReadingListIndex", erasedBook);
         }
+
+
+        //public ActionResult SubmitBook()
+        //{
+        //    return View();
+        //}
+
+        //public ActionResult SubmitBook()
+        //{
+        //    return View();
+        //}
 
         
         //protected override void Dispose(bool disposing)

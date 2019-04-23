@@ -334,6 +334,18 @@
     <Compile Include="Migrations\201904210552422_DbUpdate21.Designer.cs">
       <DependentUpon>201904210552422_DbUpdate21.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904222156545_DbUpdate22.cs" />
+    <Compile Include="Migrations\201904222156545_DbUpdate22.Designer.cs">
+      <DependentUpon>201904222156545_DbUpdate22.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904230608042_DbUpdate23.cs" />
+    <Compile Include="Migrations\201904230608042_DbUpdate23.Designer.cs">
+      <DependentUpon>201904230608042_DbUpdate23.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904231453324_thing.cs" />
+    <Compile Include="Migrations\201904231453324_thing.Designer.cs">
+      <DependentUpon>201904231453324_thing.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -458,7 +470,6 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\GroupAdmin\Members.cshtml" />
-    <Content Include="Views\Member\ReadingList.cshtml" />
     <Content Include="Views\Member\ReadingListIndex.cshtml" />
     <Content Include="Views\Member\ReadingListDelete.cshtml" />
     <Content Include="Views\Member\BookEntrySubmissionIndex.cshtml" />
@@ -577,6 +588,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904210552422_DbUpdate21.resx">
       <DependentUpon>201904210552422_DbUpdate21.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904222156545_DbUpdate22.resx">
+      <DependentUpon>201904222156545_DbUpdate22.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904230608042_DbUpdate23.resx">
+      <DependentUpon>201904230608042_DbUpdate23.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904231453324_thing.resx">
+      <DependentUpon>201904231453324_thing.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
