@@ -186,55 +186,83 @@ namespace Capstone.Controllers
             }
         }
 
-        public ActionResult ReadingListIndex()
+        public ActionResult ReadingList()
         {
             var newList = db.ReadingListModels.ToList();
             return View(newList);
         }
 
-        public ActionResult ReadingList()
+        public ActionResult ReadingListAdd()
         {
             return View();
         }
 
         [HttpPost]
-        public ActionResult ReadingList(ReadingListModel newBook)
+        public ActionResult ReadingListAdd(ReadingListModel addedBook)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.ReadingListModels.Add(newBook);
+                db.ReadingListModels.Add(addedBook);
+                db.SaveChanges();
+                return RedirectToAction("ReadingList");
+            }
+            catch
+            {
+                return View();
+            }
+        }
+
+        public ActionResult ReadingListEdit(int id)
+        {
+            var bookToEdit = db.ReadingListModels.Find(id);
+            return View(bookToEdit);
+        }
+
+        [HttpPost]
+        public ActionResult ReadingListEdit(ReadingListModel newBook)
+        {
+            try
+            {
+                db.Entry(newBook).State = EntityState.Modified;
                 db.SaveChanges();
 
-                return RedirectToAction("ReadingListIndex");
+                return RedirectToAction("ReadingList");
             }
-            else
+            catch
             {
                 return View(newBook);
             }
         }
 
         // GET: Member/Delete/5
-        public ActionResult DeleteBook(int id)
+        public ActionResult ReadingListDelete(int? id)
         {
             ReadingListModel erasedBook = db.ReadingListModels.Find(id);
-            if (erasedBook == null)
-            {
-                return HttpNotFound();
-            }
             return View(erasedBook);
         }
 
         // POST: Member/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult BookDeleted(int id)
+        public ActionResult ReadingListDelete(int id)
         {
-            ReadingListModel erasedBook = db.ReadingListModels.SingleOrDefault(r => r.ID == id);
-            db.ReadingListModels.Remove(erasedBook);
-            db.SaveChanges();
-            var erasedBooks = db.ReadingListModels.ToList();
+            try
+            {
+                var erasedBook = db.ReadingListModels.Find(id);
+                db.ReadingListModels.Remove(erasedBook);
+                db.SaveChanges();
+                return RedirectToAction("ReadingList");
+            }
+            catch
+            {
+                return View();
 
-            return View("ReadingListIndex", erasedBook);
+            }
+            //ReadingListModel erasedBook = db.ReadingListModels.SingleOrDefault(r => r.ID == id);
+            //db.ReadingListModels.Remove(erasedBook);
+            //db.SaveChanges();
+            //var erasedBooks = db.ReadingListModels.ToList();
+
         }
 
 

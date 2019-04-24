@@ -1,10 +1,10 @@
 ﻿@model Capstone.Models.ReadingListModel
 
 @{
-    ViewBag.Title = "ReadingListDelete";
+    ViewBag.Title = "BookDeleted";
 }
 
-<h2>ReadingListDelete</h2>
+<h2>BookDeleted</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -36,12 +36,20 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.MyReview)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MyReview)
+        </dd>
+
+        @*<dt>
             @Html.DisplayNameFor(model => model.ApplicationUserId)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.ApplicationUserId)
-        </dd>
+        </dd>*@
 
     </dl>
 
