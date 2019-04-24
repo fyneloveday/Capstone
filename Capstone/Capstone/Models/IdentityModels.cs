@@ -29,6 +29,9 @@ namespace Capstone.Models
         public DbSet<CurrentlyReadingModel> CurrentlyReadingModels { get; set; }
         public DbSet<SendEmailModel> SendEmailModels { get; set; }
         public DbSet<ReadingListModel> ReadingListModels { get; set; }
+
+
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {

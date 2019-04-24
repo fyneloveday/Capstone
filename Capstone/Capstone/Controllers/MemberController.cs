@@ -117,22 +117,24 @@ namespace Capstone.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult JoinGroup(int? Id)
+        [HttpPost]
+        public ActionResult JoinGroup()
         {
-            var groupToJoin = db.GroupModels.Find(Id);
-            return View(groupToJoin);
+            
+
+            return View();
         }
 
-        [HttpPost]
-        public ActionResult JoinGroup(MemberModel newMember)
-        {
-           newMember.ApplicationUserId = User.Identity.GetUserId();
-            var becomeMember = User.Identity.GetUserId();
-            GroupModel groupToJoin = new GroupModel();
-            db.MemberModels.Add(newMember);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
+        //[HttpPost]
+        //public ActionResult JoinGroup(MemberModel newMember)
+        //{
+        //   newMember.ApplicationUserId = User.Identity.GetUserId();
+        //    var becomeMember = User.Identity.GetUserId();
+        //    GroupModel groupToJoin = new GroupModel();
+        //    db.MemberModels.Add(newMember);
+        //    db.SaveChanges();
+        //    return RedirectToAction("Index");
+        //}
 
 
         public ActionResult BookEntrySubmissionIndex()

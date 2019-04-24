@@ -346,6 +346,10 @@
     <Compile Include="Migrations\201904231453324_thing.Designer.cs">
       <DependentUpon>201904231453324_thing.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904231959094_thing1.cs" />
+    <Compile Include="Migrations\201904231959094_thing1.Designer.cs">
+      <DependentUpon>201904231959094_thing1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -474,6 +478,7 @@
     <Content Include="Views\Member\ReadingListDelete.cshtml" />
     <Content Include="Views\Member\BookEntrySubmissionIndex.cshtml" />
     <Content Include="Views\Member\BookEntrySubmission.cshtml" />
+    <Content Include="Views\Member\JoinGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -597,6 +602,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904231453324_thing.resx">
       <DependentUpon>201904231453324_thing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904231959094_thing1.resx">
+      <DependentUpon>201904231959094_thing1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
