@@ -32,6 +32,8 @@ namespace Capstone.Models
         public string FavoriteBook { get; set; }
         [Display(Name = "Currently Reading")]
         public string CurrentlyReading { get; set; }
+        [Display(Name = "Reading Progress")]
+        public int ProgressInBook { get; set; }
         [Display(Name = "About Yourself")]
         public string AboutYourself { get; set; }
         public List<BookAPIModel> BookRating { get; set; }

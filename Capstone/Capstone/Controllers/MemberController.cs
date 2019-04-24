@@ -84,6 +84,7 @@ namespace Capstone.Controllers
            // memberInDb.Email = member.Email;
             memberInDb.FavoriteBook = member.FavoriteBook;
             memberInDb.CurrentlyReading = member.CurrentlyReading;
+            memberInDb.ProgressInBook = member.ProgressInBook;
             memberInDb.AboutYourself = member.AboutYourself;
             db.SaveChanges();
 
