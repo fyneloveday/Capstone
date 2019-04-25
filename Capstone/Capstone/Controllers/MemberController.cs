@@ -119,24 +119,34 @@ namespace Capstone.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpPost]
-        public ActionResult JoinGroup()
+        [HttpGet]
+        public ActionResult JoinGroup(int id)
         {
-            
-
-            return View();
+            var findGroup = db.GroupModels.Find(id);
+            if (findGroup == null)
+            {
+                return HttpNotFound();
+            }
+            return View(findGroup);
+            //return RedirectToAction("Index", "GroupAdmin");
         }
 
         [HttpPost]
-        public ActionResult JoinGroup(MemberModel newMember)
+        public ActionResult JoinGroup(GroupModel group)
         {
-            if (ModelState.IsValid)
-            {
-                //db.Add(newMember);
-                db.SaveChanges();
-                return RedirectToAction("Index", "GroupAdmin");
-            }
-            return View(newMember);
+            var userLoggedIn = User.Identity.GetUserId();
+            var member = db.MemberModels.Where(m => m.ApplicationUserId == userLoggedIn).FirstOrDefault();
+            var groupToJoin = db.GroupModels.Where(g => g.Id == group.Id).FirstOrDefault();
+            GroupMembersModel thing = new GroupMembersModel();
+            thing.MemberId = member.ID;
+            thing.GroupId = groupToJoin.Id;
+            db.Groupmembers.Add(thing);
+            db.SaveChanges();
+            
+
+            return View();
+            
+            
         }
 
 

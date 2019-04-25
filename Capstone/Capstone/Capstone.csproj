@@ -488,11 +488,11 @@
     <Content Include="Views\GroupAdmin\Members.cshtml" />
     <Content Include="Views\Member\BookEntrySubmissionIndex.cshtml" />
     <Content Include="Views\Member\BookEntrySubmission.cshtml" />
-    <Content Include="Views\Member\JoinGroup.cshtml" />
     <Content Include="Views\Member\ReadingList.cshtml" />
     <Content Include="Views\Member\ReadingListEdit.cshtml" />
     <Content Include="Views\Member\ReadingListDelete.cshtml" />
     <Content Include="Views\Member\ReadingListAdd.cshtml" />
+    <Content Include="Views\Member\JoinGroup.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
