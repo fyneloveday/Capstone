@@ -127,16 +127,17 @@ namespace Capstone.Controllers
             return View();
         }
 
-        //[HttpPost]
-        //public ActionResult JoinGroup(MemberModel newMember)
-        //{
-        //   newMember.ApplicationUserId = User.Identity.GetUserId();
-        //    var becomeMember = User.Identity.GetUserId();
-        //    GroupModel groupToJoin = new GroupModel();
-        //    db.MemberModels.Add(newMember);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
+        [HttpPost]
+        public ActionResult JoinGroup(MemberModel newMember)
+        {
+            if (ModelState.IsValid)
+            {
+                //db.Add(newMember);
+                db.SaveChanges();
+                return RedirectToAction("Index", "GroupAdmin");
+            }
+            return View(newMember);
+        }
 
 
         public ActionResult BookEntrySubmissionIndex()

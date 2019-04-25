@@ -9,6 +9,9 @@ namespace Capstone.Models
 {
     public class GroupMembersModel
     {
+        [Key]
+        public int Id { get; set; }
+
         [ForeignKey("GroupModel")]
         public int GroupId { get; set; }
         public GroupModel GroupModel { get; set; }
