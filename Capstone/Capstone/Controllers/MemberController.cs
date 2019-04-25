@@ -18,7 +18,8 @@ namespace Capstone.Controllers
         // GET: Member
         public ActionResult Index()
         {
-            var members = db.MemberModels.ToList();
+            var loggedInUser = User.Identity.GetUserId();
+            var members = db.MemberModels.Where(m => m.ApplicationUserId == loggedInUser).FirstOrDefault();
             return View(members);
         }
 
