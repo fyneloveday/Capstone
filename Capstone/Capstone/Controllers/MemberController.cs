@@ -20,6 +20,7 @@ namespace Capstone.Controllers
         {
             var loggedInUser = User.Identity.GetUserId();
             var members = db.MemberModels.Where(m => m.ApplicationUserId == loggedInUser).FirstOrDefault();
+
             return View(members);
         }
 
@@ -27,10 +28,10 @@ namespace Capstone.Controllers
         public ActionResult Details(int id)
         {
 
-            if(id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            //if(id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
             var members = db.MemberModels.SingleOrDefault();
             return View(members);
         }
@@ -53,13 +54,13 @@ namespace Capstone.Controllers
                 var loggedMember = db.MemberModels.Where(m => m.ID == member.ID);
                 db.MemberModels.Add(member);
                 db.SaveChanges();
-               return RedirectToAction("Index", "Member");
+                return RedirectToAction("Index", "Member");
             }
             else
             {
                 return View(member);
             }
-            
+
         }
 
         // GET: Member/Edit/5
@@ -82,7 +83,7 @@ namespace Capstone.Controllers
             memberInDb.FirstName = member.FirstName;
             memberInDb.MiddleName = member.MiddleName;
             memberInDb.LastName = member.LastName;
-           // memberInDb.Email = member.Email;
+            // memberInDb.Email = member.Email;
             memberInDb.FavoriteBook = member.FavoriteBook;
             memberInDb.CurrentlyReading = member.CurrentlyReading;
             memberInDb.ProgressInBook = member.ProgressInBook;
@@ -108,10 +109,10 @@ namespace Capstone.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-                MemberModel member = db.MemberModels.Find(id);
-                db.MemberModels.Remove(member);
-                db.SaveChanges();
-                return RedirectToAction("Index");          
+            MemberModel member = db.MemberModels.Find(id);
+            db.MemberModels.Remove(member);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
         protected override void Dispose(bool disposing)
         {
@@ -119,19 +120,20 @@ namespace Capstone.Controllers
             base.Dispose(disposing);
         }
 
-        [HttpGet]
-        public ActionResult JoinGroup(int id)
-        {
-            var findGroup = db.GroupModels.Find(id);
-            if (findGroup == null)
-            {
-                return HttpNotFound();
-            }
-            return View(findGroup);
-            //return RedirectToAction("Index", "GroupAdmin");
-        }
 
-        [HttpPost]
+        //[HttpGet]
+        //public ActionResult JoinGroup(int id)
+        //{
+        //    var findGroup = db.GroupModels.Find(id);
+        //    if (findGroup == null)
+        //    {
+        //        return HttpNotFound();
+        //    }
+        //    return View(findGroup);
+        //    //return RedirectToAction("Index", "GroupAdmin");
+        //}
+
+        [HttpGet]
         public ActionResult JoinGroup(GroupModel group)
         {
             var userLoggedIn = User.Identity.GetUserId();
@@ -143,11 +145,27 @@ namespace Capstone.Controllers
             db.Groupmembers.Add(thing);
             db.SaveChanges();
             
-
-            return View();
-            
-            
+            return RedirectToAction("MyGroup", "Member");
         }
+
+        [HttpGet]
+        public ActionResult MyGroup()
+        {
+            var myGroupMember = new GroupModel();
+           
+            var loggedInUser = User.Identity.GetUserId();
+            var members = db.MemberModels.Where(m => m.ApplicationUserId == loggedInUser).FirstOrDefault();
+            var registeredGroup = db.Groupmembers.Where(g => g.MemberId == members.ID).ToList();
+            List<GroupModel> thing = new List<GroupModel>();
+            foreach(GroupMembersModel otherthing in registeredGroup)
+            {
+                thing.Add(db.GroupModels.Where(p => p.Id == otherthing.GroupId).SingleOrDefault());
+            }
+            
+            return View(thing);
+        }
+
+
 
 
         public ActionResult BookEntrySubmissionIndex()

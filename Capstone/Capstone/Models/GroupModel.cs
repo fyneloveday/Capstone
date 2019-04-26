@@ -20,6 +20,7 @@ namespace Capstone.Models
         public string Rules { get; set; }
         [Display(Name = "Reading Assignment")]
         public string ReadingAssignment { get; set; }
+        public MemberModel Members { get; set; }
     
         [ForeignKey("MemberModel")]
         public int GroupAdminId { get; set; }

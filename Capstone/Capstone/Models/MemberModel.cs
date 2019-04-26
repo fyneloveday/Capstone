@@ -36,6 +36,7 @@ namespace Capstone.Models
         public int ProgressInBook { get; set; }
         [Display(Name = "About Yourself")]
         public string AboutYourself { get; set; }
+        public GroupModel YourGroups { get; set; }
         public List<BookAPIModel> BookRating { get; set; }
 
         [ForeignKey("ApplicationUser")]
