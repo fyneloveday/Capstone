@@ -66,14 +66,25 @@
             @Html.DisplayFor(model => model.AboutYourself)
         </td>
         <th></th>
+</tr>
 
+    
+    <tr>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = Model.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) |
-            @Html.ActionLink("Create Group", "CreateGroup", "GroupAdmin") |
-            @Html.ActionLink("Reading List", "ReadingList", "Member") |
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+            </td>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = Model.ID }) 
+            </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) 
+            </td>
+        <td>
+            @Html.ActionLink("Create Group", "CreateGroup", "GroupAdmin") 
+            </td>
+        <td>
+            @Html.ActionLink("Reading List", "ReadingList", "Member") 
         </td>
     </tr>
-
+        
 </table>

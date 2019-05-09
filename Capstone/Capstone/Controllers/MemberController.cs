@@ -144,7 +144,6 @@ namespace Capstone.Controllers
             thing.GroupId = groupToJoin.Id;
             db.Groupmembers.Add(thing);
             db.SaveChanges();
-            
             return RedirectToAction("MyGroup", "Member");
         }
 
@@ -168,53 +167,53 @@ namespace Capstone.Controllers
 
 
 
-        public ActionResult BookEntrySubmissionIndex()
-        {
-            var newEntry = db.BookEntryModels.ToList();
-            return View();
-        }
+        //public ActionResult BookEntrySubmissionIndex()
+        //{
+        //    var newEntry = db.BookEntryModels.ToList();
+        //    return View();
+        //}
 
-         public ActionResult BookEntrySubmission()
-        {
-            return View();
-        }
+        // public ActionResult BookEntrySubmission()
+        //{
+        //    return View();
+        //}
 
-        [HttpPost]
-        public ActionResult BookEntrySubmission(BookEntryModel newBook)
-        {
-            //try
-            //{
-            //    WebMail.SmtpServer = "smtp.gmail.com";
-            //    WebMail.SmtpPort = 587;
-            //    WebMail.SmtpUseDefaultCredentials = true;
-            //    WebMail.EnableSsl = true;
-            //    WebMail.UserName = db.Users.Select(u => u.Email).ToString();                //"fynecode@gmail.com";
-            //    WebMail.Password = db.Users.Select(u => u.PasswordHash).ToString();               //"codemaster"; 
+        //[HttpPost]
+        //public ActionResult BookEntrySubmission(BookEntryModel newBook)
+        //{
+        //    try
+        //    {
+        //        WebMail.SmtpServer = "smtp.gmail.com";
+        //        WebMail.SmtpPort = 587;
+        //        WebMail.SmtpUseDefaultCredentials = true;
+        //        WebMail.EnableSsl = true;
+        //        WebMail.UserName = db.Users.Select(u => u.Email).ToString();                //"fynecode@gmail.com";
+        //        WebMail.Password = db.Users.Select(u => u.PasswordHash).ToString();               //"codemaster"; 
 
-            //    WebMail.From = db.Users.Select(u => u.Email).ToString();                   //"";
+        //        WebMail.From = db.Users.Select(u => u.Email).ToString();                   //"";
 
-            //    WebMail.Send(to: "fynecode@gmail.com", title: newBook.Title, firstName: newBook.AuthorFirstName, middleName: newBook.AuthorMiddleName, lastName: newBook.AuthorLastName, yearPublished: newBook.YearPublished, isbn: newBook.ISBN, publisher: newBook.Publisher, synopsis: newBook.Synopsis, rating: newBook.Rating, isBodyHtml: true);
-            //    ViewBag.status = "Email Sent Successfully.";
-            //}
-            //catch
-            //{
-            //    ViewBag.Status = "Problem while sending email, Please check details.";
-            //}
-            //return View();
+        //        WebMail.Send(to: "fynecode@gmail.com", subject: newBook.Title, firstName: newBook.AuthorFirstName, middleName: newBook.AuthorMiddleName, lastName: newBook.AuthorLastName, yearPublished: newBook.YearPublished, isbn: newBook.ISBN, publisher: newBook.Publisher, synopsis: newBook.Synopsis, rating: newBook.Rating, isBodyHtml: true);
+        //        ViewBag.status = "Email Sent Successfully.";
+        //    }
+        //    catch
+        //    {
+        //        ViewBag.Status = "Problem while sending email, Please check details.";
+        //    }
+        //    return View();
 
 
-            //if (ModelState.IsValid)
-            // {
-            //     db.BookEntryModels.Add(newBook);
-            //     db.SaveChanges();
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.BookEntryModels.Add(newBook);
+        //        db.SaveChanges();
 
-            //     return RedirectToAction("BookEntrySubmissionIndex");
-            // }
-            // else
-            {
-                return View(newBook);
-            }
-        }
+        //        return RedirectToAction("BookEntrySubmissionIndex");
+        //    }
+        //    else
+        //    {
+        //        return View(newBook);
+        //    }
+        //}
 
         public ActionResult ReadingList()
         {
