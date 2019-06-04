@@ -10,6 +10,15 @@
     <h4>MemberModel</h4>
     <hr />
     <dl class="dl-horizontal">
+        @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
+        {
+            <dt>
+                Avatar
+            </dt>
+            <dd>
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" style="width:280x;height:220px;" />
+            </dd>
+        }
         <dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
@@ -34,14 +43,14 @@
             @Html.DisplayFor(model => model.LastName)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Password)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Password)
-        </dd>
-
+        </dd>*@
+       
         <dt>
             @Html.DisplayNameFor(model => model.Age)
         </dt>
@@ -72,6 +81,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.FavoriteBook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Rating)
         </dd>
 
         <dt>

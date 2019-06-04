@@ -1,0 +1,129 @@
+﻿@model Capstone.Models.GroupMembersModel
+
+@{
+    ViewBag.Title = "MembersToDelete";
+}
+
+<h2>MembersToDelete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>MemberModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.MiddleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.MiddleName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.Password)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.Password)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.Age)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.Age)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.Gender)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.Gender)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.MemberSince)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.MemberSince)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.FavoriteBook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.FavoriteBook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.Rating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.Rating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.CurrentlyReading)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.CurrentlyReading)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.ProgressInBook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.ProgressInBook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.AboutYourself)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.AboutYourself)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MemberModel.ApplicationUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MemberModel.ApplicationUserId)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => model.GroupId)
+        @Html.HiddenFor(model => model.MemberId)
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

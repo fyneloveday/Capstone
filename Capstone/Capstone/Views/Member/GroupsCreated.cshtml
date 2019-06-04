@@ -1,16 +1,19 @@
 ﻿@model IEnumerable<Capstone.Models.GroupModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "GroupsCreated";
 }
 
-<h2>Index</h2>
+<h2>GroupsCreated</h2>
 
 <p>
-    @Html.ActionLink("Create New", "CreateGroup", "GroupAdmin")
+    @Html.ActionLink("Create New", "Create")
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MemberModel.FirstName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.GroupName)
         </th>
@@ -23,14 +26,14 @@
         <th>
             @Html.DisplayNameFor(model => model.ReadingAssignment)
         </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.GroupAdminId)
-        </th>*@
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.MemberModel.FirstName)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.GroupName)
         </td>
@@ -43,23 +46,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.ReadingAssignment)
         </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => User.Identity.Name)
-        </td>*@
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) 
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) 
-                </td>
-        <td>
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) 
-            </td>
-        <td>
-            @Html.ActionLink("Join Group", "JoinGroup", "Member", new { id = item.Id }, null)
-        </td>
-        <td>
-            @Html.ActionLink("Group Members", "Members", "GroupAdmin", new { id = item.Id }, null)
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
         </td>
     </tr>
 }

@@ -30,6 +30,7 @@ namespace Capstone.Models
         public DbSet<SendEmailModel> SendEmailModels { get; set; }
         public DbSet<ReadingListModel> ReadingListModels { get; set; }
         public DbSet<GroupMembersModel> Groupmembers { get; set; }
+        public DbSet<File> Files { get; set; }
 
 
 

@@ -12,12 +12,12 @@ namespace Capstone.Models
         [Key]
         public int Id { get; set; }
 
-        [ForeignKey("GroupModel")]
         public int GroupId { get; set; }
-        public GroupModel GroupModel { get; set; }
-
-        [ForeignKey("MemberModel")]
+        [ForeignKey("GroupId")]
+        public virtual GroupModel GroupModel { get; set; }
         public int MemberId { get; set; }
-        public MemberModel MemberModel { get; set; }
+        [ForeignKey("MemberId")]
+        public virtual MemberModel MemberModel { get; set; }
+        public GroupMembershipStatus GroupMembershipStatus { get; set; }
     }
 }

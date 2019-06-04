@@ -23,7 +23,7 @@ namespace Capstone.Models
         //[Required]
         //[Display(Name = "Email")]
         //public string Email { get; set; }
-
+        
         public string Password { get; set; }
         public int Age { get; set; }
         public string Gender { get; set; }
@@ -39,11 +39,14 @@ namespace Capstone.Models
         [Display(Name = "About Yourself")]
         public string AboutYourself { get; set; }
         public GroupModel YourGroups { get; set; }
+        [Display(Name = "Pickup Status")]
         public List<BookAPIModel> BookRating { get; set; }
 
         [ForeignKey("ApplicationUser")]
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
+        public virtual ICollection<File> Files { get; set; }
 
     }
 }

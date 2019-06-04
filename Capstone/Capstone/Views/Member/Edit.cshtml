@@ -7,7 +7,7 @@
 <h2>Edit</h2>
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Member", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -49,6 +49,13 @@
         </div>
     </div>
 
+    @*<div class="form-group">
+            @Html.LabelFor(model => model.ImagePath, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input type="file" name="ImageFile" required>
+            </div>
+        </div>*@
+
     <div class="form-group">
         @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -82,6 +89,24 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.Rating, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            0
+            @Html.RadioButtonFor(model => model.Rating, "0")
+            1
+            @Html.RadioButtonFor(model => model.Rating, "1")
+            2
+            @Html.RadioButtonFor(model => model.Rating, "2")
+            3
+            @Html.RadioButtonFor(model => model.Rating, "3")
+            4
+            @Html.RadioButtonFor(model => model.Rating, "4")
+            5
+            @Html.RadioButtonFor(model => model.Rating, "5")
+        </div>
+    </div>
+
+    <div class="form-group">
         @Html.LabelFor(model => model.CurrentlyReading, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.CurrentlyReading, new { htmlAttributes = new { @class = "form-control" } })
@@ -102,6 +127,23 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.AboutYourself, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.AboutYourself, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    @if (Model.Files.Any(f => f.FileType == FileType.Avatar))
+    {
+        <div class="form-group">
+            <span class="control-label col-md-2"><strong>Current Avatar</strong></span>
+            <div class="col-md-10">
+                <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" style="width:280x;height:220px;" />
+            </div>
+        </div>
+    }
+
+    <div class="form-group">
+        @Html.Label("Avatar", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            <input type="file" id="Avatar" name="upload" />
         </div>
     </div>
 

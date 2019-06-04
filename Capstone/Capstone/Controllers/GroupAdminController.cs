@@ -58,7 +58,7 @@ namespace Capstone.Controllers
             {
                 // the user that is logged in is the AdminPersonID
                 var makeAdmin = db.MemberModels.Where(m => m.ApplicationUserId == newAdmin).FirstOrDefault();
-               newGroup.GroupAdminId = makeAdmin.ID;
+                newGroup.GroupAdminId = makeAdmin.ID;
 
                 db.GroupModels.Add(newGroup);
                 db.SaveChanges();
@@ -128,6 +128,51 @@ namespace Capstone.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        
+
+        [HttpGet]
+        public ActionResult Members(int id)
+        {
+            var groupsJoined = db.GroupModels.Where(g => g.Id == id).FirstOrDefault();
+            var appMembers = db.Groupmembers.Where(g => g.GroupId == groupsJoined.Id).Select(g => g.MemberId).ToList();
+            var membersWhoJoined = db.MemberModels.Where(m => appMembers.Contains(m.ID)).ToList();
+
+            var groupMemberViewModel = new GroupMembersViewModel() { Members = membersWhoJoined, GroupId = groupsJoined.Id };
+            return View(groupMemberViewModel);
+        }
+
+        public ActionResult MembersToDelete(int id, int secondaryId)
+        {           
+            var groupMember = db.Groupmembers.First(g => g.GroupId == secondaryId && g.MemberId == id);
+
+            return View(groupMember);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult MembersToDelete(GroupMembersModel memberToRemove)
+        {
+            var groupMember = db.Groupmembers.First(g => g.GroupId == memberToRemove.GroupId && g.MemberId == memberToRemove.MemberId);
+
+            db.Groupmembers.Remove(groupMember);
+            db.SaveChanges();
+            return RedirectToAction("Members", new { id = memberToRemove.GroupId });
+            //try
+            //{
+            //var member = db.MemberModels.Find(id);
+            //db.MemberModels.Remove(member);
+            //return RedirectToAction("Members");
+            //}
+            //catch
+            //{
+            //    return View();
+            //}
+        }
+
+        //SqlException: The DELETE statement conflicted with the REFERENCE constraint "FK_dbo.GroupMembersModels_dbo.MemberModels_MemberId". 
+        //The conflict occurred in database "aspnet-Capstone-20190322091738", table "dbo.GroupMembersModels", column 'MemberId'.
+
 
         protected override void Dispose(bool disposing)
         {

@@ -6,9 +6,9 @@
 
 <h2>Index</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
 <table class="table">
     <tr>
         <th>
@@ -29,6 +29,8 @@
         <td>
             @Html.DisplayFor(model => model.LastName)
         </td>
+
+
         <th>
             @Html.DisplayNameFor(model => model.Age)
         </th>
@@ -46,6 +48,12 @@
         </th>
         <td>
             @Html.DisplayFor(model => model.FavoriteBook)
+        </td>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <td>
+            @Html.DisplayFor(model => model.Rating)
         </td>
         <th>
             @Html.DisplayNameFor(model => model.CurrentlyReading)
@@ -66,25 +74,28 @@
             @Html.DisplayFor(model => model.AboutYourself)
         </td>
         <th></th>
-</tr>
+    </tr>
 
-    
+
     <tr>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
-            </td>
+        </td>
         <td>
-            @Html.ActionLink("Details", "Details", new { id = Model.ID }) 
-            </td>
+            @Html.ActionLink("Details", "Details", new { id = Model.ID })
+        </td>
         <td>
-            @Html.ActionLink("Delete", "Delete", new { id = Model.ID }) 
-            </td>
+            @Html.ActionLink("Delete", "Delete", new { id = Model.ID })
+        </td>
         <td>
-            @Html.ActionLink("Create Group", "CreateGroup", "GroupAdmin") 
-            </td>
+            @Html.ActionLink("Create Group", "CreateGroup", "GroupAdmin")
+        </td>
         <td>
-            @Html.ActionLink("Reading List", "ReadingList", "Member") 
+            @Html.ActionLink("Reading List", "ReadingList", "Member")
+        </td>
+        <td>
+            @Html.ActionLink("My Group Memberships", "MyGroup", "Member")
         </td>
     </tr>
-        
+
 </table>

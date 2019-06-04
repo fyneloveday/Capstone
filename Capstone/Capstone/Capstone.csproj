@@ -187,6 +187,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookAPIController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\GroupAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -378,14 +379,62 @@
     <Compile Include="Migrations\201905091802585_DbUpdate30.Designer.cs">
       <DependentUpon>201905091802585_DbUpdate30.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905240426016_DbUpdate31.cs" />
+    <Compile Include="Migrations\201905240426016_DbUpdate31.Designer.cs">
+      <DependentUpon>201905240426016_DbUpdate31.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905252140141_DbUpdate32.cs" />
+    <Compile Include="Migrations\201905252140141_DbUpdate32.Designer.cs">
+      <DependentUpon>201905252140141_DbUpdate32.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905282204535_AddedFileModel.cs" />
+    <Compile Include="Migrations\201905282204535_AddedFileModel.Designer.cs">
+      <DependentUpon>201905282204535_AddedFileModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905282208433_UcommentedFilesinMemberModel.cs" />
+    <Compile Include="Migrations\201905282208433_UcommentedFilesinMemberModel.Designer.cs">
+      <DependentUpon>201905282208433_UcommentedFilesinMemberModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905282211548_UcommentedFilesinIdentityModel.cs" />
+    <Compile Include="Migrations\201905282211548_UcommentedFilesinIdentityModel.Designer.cs">
+      <DependentUpon>201905282211548_UcommentedFilesinIdentityModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905282255385_DbUpdate33.cs" />
+    <Compile Include="Migrations\201905282255385_DbUpdate33.Designer.cs">
+      <DependentUpon>201905282255385_DbUpdate33.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905290053142_DbUpdate34.cs" />
+    <Compile Include="Migrations\201905290053142_DbUpdate34.Designer.cs">
+      <DependentUpon>201905290053142_DbUpdate34.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905291826125_AddedKeyToFileCs.cs" />
+    <Compile Include="Migrations\201905291826125_AddedKeyToFileCs.Designer.cs">
+      <DependentUpon>201905291826125_AddedKeyToFileCs.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905292153570_AddedKeyToFileCs1.cs" />
+    <Compile Include="Migrations\201905292153570_AddedKeyToFileCs1.Designer.cs">
+      <DependentUpon>201905292153570_AddedKeyToFileCs1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905301718481_GroupMembershipStatus.cs" />
+    <Compile Include="Migrations\201905301718481_GroupMembershipStatus.Designer.cs">
+      <DependentUpon>201905301718481_GroupMembershipStatus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906032022032_Group member nav prop fix.cs" />
+    <Compile Include="Migrations\201906032022032_Group member nav prop fix.Designer.cs">
+      <DependentUpon>201906032022032_Group member nav prop fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
     <Compile Include="Models\BookEntryModel.cs" />
     <Compile Include="Models\CurrentlyReadingModel.cs" />
+    <Compile Include="Models\File.cs" />
+    <Compile Include="Models\GroupMembershipStatus.cs" />
     <Compile Include="Models\GroupMembersModel.cs" />
+    <Compile Include="Models\GroupMembersViewModel.cs" />
     <Compile Include="Models\GroupModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\FileType.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\ReadingListModel.cs" />
     <Compile Include="Models\SendEmailModel.cs" />
@@ -510,9 +559,13 @@
     <Content Include="Views\Member\ReadingListAdd.cshtml" />
     <Content Include="Views\Member\JoinGroup.cshtml" />
     <Content Include="Views\Member\MyGroup.cshtml" />
+    <Content Include="Views\GroupAdmin\MembersToDelete.cshtml" />
+    <Content Include="Views\Member\GroupsCreated.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Images\" />
+    <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -657,6 +710,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905091802585_DbUpdate30.resx">
       <DependentUpon>201905091802585_DbUpdate30.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905240426016_DbUpdate31.resx">
+      <DependentUpon>201905240426016_DbUpdate31.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905252140141_DbUpdate32.resx">
+      <DependentUpon>201905252140141_DbUpdate32.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905282204535_AddedFileModel.resx">
+      <DependentUpon>201905282204535_AddedFileModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905282208433_UcommentedFilesinMemberModel.resx">
+      <DependentUpon>201905282208433_UcommentedFilesinMemberModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905282211548_UcommentedFilesinIdentityModel.resx">
+      <DependentUpon>201905282211548_UcommentedFilesinIdentityModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905282255385_DbUpdate33.resx">
+      <DependentUpon>201905282255385_DbUpdate33.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905290053142_DbUpdate34.resx">
+      <DependentUpon>201905290053142_DbUpdate34.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905291826125_AddedKeyToFileCs.resx">
+      <DependentUpon>201905291826125_AddedKeyToFileCs.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905292153570_AddedKeyToFileCs1.resx">
+      <DependentUpon>201905292153570_AddedKeyToFileCs1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905301718481_GroupMembershipStatus.resx">
+      <DependentUpon>201905301718481_GroupMembershipStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906032022032_Group member nav prop fix.resx">
+      <DependentUpon>201906032022032_Group member nav prop fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

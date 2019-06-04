@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Capstone.Models.MemberModel>
+﻿@model GroupMembersViewModel
 
 @{
     ViewBag.Title = "Members";
@@ -12,24 +12,24 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.FirstName)
+            @Html.DisplayNameFor(model => model.Members.First().FirstName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.LastName)
+            @Html.DisplayNameFor(model => model.Members.First().LastName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FavoriteBook)
+            @Html.DisplayNameFor(model => model.Members.First().FavoriteBook)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.AboutYourself)
+            @Html.DisplayNameFor(model => model.Members.First().AboutYourself)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ApplicationUserId)
+            @Html.DisplayNameFor(model => model.Members.First().ApplicationUserId)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+@foreach (var item in Model.Members) {
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.FirstName)
@@ -49,7 +49,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Delete Member", "MembersToDelete", "GroupAdmin", new { id = item.ID, secondaryId = Model.GroupId }, null)
         </td>
     </tr>
 }

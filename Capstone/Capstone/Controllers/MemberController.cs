@@ -3,10 +3,12 @@ using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Helpers;
+using System.Web.Hosting;
 using System.Web.Mvc;
 
 namespace Capstone.Controllers
@@ -20,19 +22,24 @@ namespace Capstone.Controllers
         {
             var loggedInUser = User.Identity.GetUserId();
             var members = db.MemberModels.Where(m => m.ApplicationUserId == loggedInUser).FirstOrDefault();
-
             return View(members);
         }
 
+
+
         // GET: Member/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(int? id)
         {
 
-            //if(id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            var members = db.MemberModels.SingleOrDefault();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var members = db.MemberModels.Include(m => m.Files).SingleOrDefault(m => m.ID == id);
+            if (members == null)
+            {
+                return HttpNotFound();
+            }
             return View(members);
         }
 
@@ -45,13 +52,27 @@ namespace Capstone.Controllers
         // POST: Member/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(MemberModel member)
+        public ActionResult Create(MemberModel member, HttpPostedFileBase upload)
         {
             member.ApplicationUserId = User.Identity.GetUserId();
 
             if (ModelState.IsValid)
             {
                 var loggedMember = db.MemberModels.Where(m => m.ID == member.ID);
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    var avatar = new Models.File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    member.Files = new List<Models.File> { avatar };
+                }
                 db.MemberModels.Add(member);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Member");
@@ -66,7 +87,7 @@ namespace Capstone.Controllers
         // GET: Member/Edit/5
         public ActionResult Edit(int id)
         {
-            var member = db.MemberModels.Find(id);
+            var member = db.MemberModels.Include(m => m.Files).SingleOrDefault(s => s.ID == id);
             if (member == null)
             {
                 return HttpNotFound();
@@ -77,20 +98,45 @@ namespace Capstone.Controllers
         // POST: Member/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(MemberModel member)
+        public ActionResult Edit(MemberModel member, HttpPostedFileBase upload)
         {
-            var memberInDb = db.MemberModels.Single(m => m.ID == member.ID);
+            var userId = User.Identity.GetUserId();
+            var memberInDb = db.MemberModels.Where(m => m.ApplicationUserId == userId).Single();
+            //var memberInDb = db.MemberModels.Find(id);
             memberInDb.FirstName = member.FirstName;
             memberInDb.MiddleName = member.MiddleName;
             memberInDb.LastName = member.LastName;
-            // memberInDb.Email = member.Email;
+            memberInDb.Age = member.Age;
             memberInDb.FavoriteBook = member.FavoriteBook;
+            memberInDb.Rating = member.Rating;
             memberInDb.CurrentlyReading = member.CurrentlyReading;
             memberInDb.ProgressInBook = member.ProgressInBook;
             memberInDb.AboutYourself = member.AboutYourself;
+            
+
+            {
+                if (upload != null && upload.ContentLength > 0)
+                {
+                    if (memberInDb.Files.Any(f => f.FileType == FileType.Avatar))
+                    {
+                        db.Files.Remove(memberInDb.Files.First(f => f.FileType == FileType.Avatar));
+                    }
+                    var avatar = new Models.File
+                    {
+                        FileName = System.IO.Path.GetFileName(upload.FileName),
+                        FileType = FileType.Avatar,
+                        ContentType = upload.ContentType
+                    };
+                    using (var reader = new System.IO.BinaryReader(upload.InputStream))
+                    {
+                        avatar.Content = reader.ReadBytes(upload.ContentLength);
+                    }
+                    memberInDb.Files = new List<Models.File> { avatar };
+                }
+            }
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Member");
         }
 
         // GET: Member/Delete/5
@@ -114,24 +160,31 @@ namespace Capstone.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-        protected override void Dispose(bool disposing)
+
+        [HttpGet]
+        public ActionResult GroupsCreated()
         {
-            db.Dispose();
-            base.Dispose(disposing);
+            var newGroup = db.GroupModels.ToList();
+            return View(newGroup);
         }
 
 
-        //[HttpGet]
-        //public ActionResult JoinGroup(int id)
-        //{
-        //    var findGroup = db.GroupModels.Find(id);
-        //    if (findGroup == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(findGroup);
-        //    //return RedirectToAction("Index", "GroupAdmin");
-        //}
+        [HttpGet]
+        public ActionResult MyGroup()
+        {
+            var myGroupMember = new GroupModel();
+
+            var loggedInUser = User.Identity.GetUserId();
+            var members = db.MemberModels.Where(m => m.ApplicationUserId == loggedInUser).FirstOrDefault();
+            var registeredGroup = db.Groupmembers.Where(g => g.MemberId == members.ID).ToList();
+            List<GroupModel> thing = new List<GroupModel>();
+            foreach (GroupMembersModel otherthing in registeredGroup)
+            {
+                thing.Add(db.GroupModels.Where(p => p.Id == otherthing.GroupId).SingleOrDefault());
+            }
+
+            return View(thing);
+        }
 
         [HttpGet]
         public ActionResult JoinGroup(GroupModel group)
@@ -139,81 +192,14 @@ namespace Capstone.Controllers
             var userLoggedIn = User.Identity.GetUserId();
             var member = db.MemberModels.Where(m => m.ApplicationUserId == userLoggedIn).FirstOrDefault();
             var groupToJoin = db.GroupModels.Where(g => g.Id == group.Id).FirstOrDefault();
-            GroupMembersModel thing = new GroupMembersModel();
-            thing.MemberId = member.ID;
-            thing.GroupId = groupToJoin.Id;
-            db.Groupmembers.Add(thing);
+            GroupMembersModel joinedGroup = new GroupMembersModel();
+            joinedGroup.MemberId = member.ID;
+            joinedGroup.GroupId = groupToJoin.Id;
+            joinedGroup.GroupMembershipStatus = joinedGroup.GroupMembershipStatus;
+            db.Groupmembers.Add(joinedGroup);
             db.SaveChanges();
             return RedirectToAction("MyGroup", "Member");
         }
-
-        [HttpGet]
-        public ActionResult MyGroup()
-        {
-            var myGroupMember = new GroupModel();
-           
-            var loggedInUser = User.Identity.GetUserId();
-            var members = db.MemberModels.Where(m => m.ApplicationUserId == loggedInUser).FirstOrDefault();
-            var registeredGroup = db.Groupmembers.Where(g => g.MemberId == members.ID).ToList();
-            List<GroupModel> thing = new List<GroupModel>();
-            foreach(GroupMembersModel otherthing in registeredGroup)
-            {
-                thing.Add(db.GroupModels.Where(p => p.Id == otherthing.GroupId).SingleOrDefault());
-            }
-            
-            return View(thing);
-        }
-
-
-
-
-        //public ActionResult BookEntrySubmissionIndex()
-        //{
-        //    var newEntry = db.BookEntryModels.ToList();
-        //    return View();
-        //}
-
-        // public ActionResult BookEntrySubmission()
-        //{
-        //    return View();
-        //}
-
-        //[HttpPost]
-        //public ActionResult BookEntrySubmission(BookEntryModel newBook)
-        //{
-        //    try
-        //    {
-        //        WebMail.SmtpServer = "smtp.gmail.com";
-        //        WebMail.SmtpPort = 587;
-        //        WebMail.SmtpUseDefaultCredentials = true;
-        //        WebMail.EnableSsl = true;
-        //        WebMail.UserName = db.Users.Select(u => u.Email).ToString();                //"fynecode@gmail.com";
-        //        WebMail.Password = db.Users.Select(u => u.PasswordHash).ToString();               //"codemaster"; 
-
-        //        WebMail.From = db.Users.Select(u => u.Email).ToString();                   //"";
-
-        //        WebMail.Send(to: "fynecode@gmail.com", subject: newBook.Title, firstName: newBook.AuthorFirstName, middleName: newBook.AuthorMiddleName, lastName: newBook.AuthorLastName, yearPublished: newBook.YearPublished, isbn: newBook.ISBN, publisher: newBook.Publisher, synopsis: newBook.Synopsis, rating: newBook.Rating, isBodyHtml: true);
-        //        ViewBag.status = "Email Sent Successfully.";
-        //    }
-        //    catch
-        //    {
-        //        ViewBag.Status = "Problem while sending email, Please check details.";
-        //    }
-        //    return View();
-
-
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.BookEntryModels.Add(newBook);
-        //        db.SaveChanges();
-
-        //        return RedirectToAction("BookEntrySubmissionIndex");
-        //    }
-        //    else
-        //    {
-        //        return View(newBook);
-        //    }
-        //}
 
         public ActionResult ReadingList()
         {
@@ -287,48 +273,14 @@ namespace Capstone.Controllers
                 return View();
 
             }
-            //ReadingListModel erasedBook = db.ReadingListModels.SingleOrDefault(r => r.ID == id);
-            //db.ReadingListModels.Remove(erasedBook);
-            //db.SaveChanges();
-            //var erasedBooks = db.ReadingListModels.ToList();
-
+            
         }
 
-
-        //public ActionResult SubmitBook()
-        //{
-        //    return View();
-        //}
-
-        //public ActionResult SubmitBook()
-        //{
-        //    return View();
-        //}
-
-        
-        //protected override void Dispose(bool disposing)
-        //{
-        //    db.Dispose();
-        //    base.Dispose(disposing);
-        //}
-
-        //public ActionResult BookRating()
-        //{
-        //    return View();
-        //}
-
-        //public ActionResult BookRating(int ratedBook, int rank)
-        //{
-        //    ReadingListModel rating = new ReadingListModel();
-        //    rating.Rating = rank;
-        //    rating.ID = ratedBook;
-        //    rating.ApplicationUserId = User.Identity.GetUserId();
-
-        //    db.ReadingListModels.Add(rating);
-        //    db.SaveChanges();
-
-        //    return RedirectToAction("ReadingList");//, "Member", new { id = ratedBookId });
-        //}
+        protected override void Dispose(bool disposing)
+        {
+            db.Dispose();
+            base.Dispose(disposing);
+        }
 
     }
 }
