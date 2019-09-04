@@ -11,6 +11,9 @@
     </p>
 <table class="table">
     <tr>
+        <td>
+            <img src="~/File?id=@Model.Files.First(f => f.FileType == FileType.Avatar).FileId" alt="avatar" style="width:90px;height:70px;" />
+        </td>
         <th>
             @Html.DisplayNameFor(model => model.FirstName)
         </th>

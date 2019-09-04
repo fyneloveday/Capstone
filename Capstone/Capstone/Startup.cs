@@ -25,10 +25,10 @@ namespace Capstone
                 role.Name = "Member";
                 roleManager.Create(role);
             }
-            if (!roleManager.RoleExists("Admin"))
+            if (!roleManager.RoleExists("GroupAdmin"))
             {
                 var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
-                role.Name = "Admin";
+                role.Name = "GroupAdmin";
                 roleManager.Create(role);
             }
         }

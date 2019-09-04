@@ -49,7 +49,7 @@ namespace Capstone.Controllers
         [HttpPost]
         public ActionResult CreateGroup(GroupModel newGroup)
         {
-            string newAdmin = User.Identity.GetUserId();
+            var newAdmin = User.Identity.GetUserId();
             if (User.Identity == null)
             {
                 return RedirectToAction("Register", "Account");
@@ -89,9 +89,10 @@ namespace Capstone.Controllers
         // POST: GroupAdmin/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,GroupName,Description,Rules,GroupAdminId,ReadingAssignment")] GroupModel groupModel)
+        public ActionResult Edit([Bind(Include = "Id,GroupName,Description,Rules,GroupAdminId,ReadingAssignment,GroupRole")] GroupModel groupModel)
         {
             if (ModelState.IsValid)
             {
@@ -172,6 +173,8 @@ namespace Capstone.Controllers
 
         //SqlException: The DELETE statement conflicted with the REFERENCE constraint "FK_dbo.GroupMembersModels_dbo.MemberModels_MemberId". 
         //The conflict occurred in database "aspnet-Capstone-20190322091738", table "dbo.GroupMembersModels", column 'MemberId'.
+
+
 
 
         protected override void Dispose(bool disposing)

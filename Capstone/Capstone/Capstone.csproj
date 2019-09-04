@@ -423,6 +423,10 @@
     <Compile Include="Migrations\201906032022032_Group member nav prop fix.Designer.cs">
       <DependentUpon>201906032022032_Group member nav prop fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906042127044_AssignedGroupRole.cs" />
+    <Compile Include="Migrations\201906042127044_AssignedGroupRole.Designer.cs">
+      <DependentUpon>201906042127044_AssignedGroupRole.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
@@ -743,6 +747,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906032022032_Group member nav prop fix.resx">
       <DependentUpon>201906032022032_Group member nav prop fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906042127044_AssignedGroupRole.resx">
+      <DependentUpon>201906042127044_AssignedGroupRole.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

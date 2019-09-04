@@ -7,7 +7,13 @@
 <h2>ReadingList</h2>
 
 <p>
-    @Html.ActionLink("My Profile", "Index", "Member")
+    <td>
+        @Html.ActionLink("My Profile", "Index", "Member")  ||                      
+    </td>
+    <td>
+        @Html.ActionLink("Add Book", "ReadingListAdd")
+    </td>
+    
 </p>
 <table class="table">
     
@@ -52,16 +58,18 @@
             <td>
                 @Html.DisplayFor(modelItem => item.MyReview)
             </td>
-            
+         </tr>  
             @*<td>
                 @Html.DisplayFor(modelItem => item.ApplicationUserId)
             </td>*@
+        <tr>
             <td>
-                @Html.ActionLink("Add Book", "ReadingListAdd", new { id = item.ID }) |
-                @Html.ActionLink("Edit", "ReadingListEdit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "ReadingListDelete", new { id = item.ID })
+                @Html.ActionLink("Edit", "ReadingListEdit", new { id = item.ID }) ||
             </td>
+            <td>
+                @Html.ActionLink("Delete", "ReadingListDelete", new { id = item.ID }) ||
+            </td>
+
         </tr>
     }
 

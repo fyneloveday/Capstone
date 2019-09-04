@@ -25,5 +25,12 @@ namespace Capstone.Models
         [ForeignKey("MemberModel")]
         public int GroupAdminId { get; set; }
         public virtual MemberModel MemberModel { get; set; }
+
+        [Required]
+        [Display(Name = "GroupRole")]
+        public string GroupRole { get; set; }
+
+
     }
+    
 }
