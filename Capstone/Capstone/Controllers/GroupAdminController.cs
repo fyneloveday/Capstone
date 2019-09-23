@@ -8,12 +8,31 @@ using System.Web;
 using System.Web.Mvc;
 using Capstone.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Capstone.Controllers
 {
     public class GroupAdminController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+
+        // Create Group Roles
+        private void groupRoles()
+        {
+            var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(db));
+            if (!roleManager.RoleExists("Member"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Member";
+                roleManager.Create(role);
+            }
+            if (!roleManager.RoleExists("Admin"))
+            {
+                var role = new Microsoft.AspNet.Identity.EntityFramework.IdentityRole();
+                role.Name = "Admin";
+                roleManager.Create(role);
+            }
+        }
 
         // GET: GroupAdmin
         public ActionResult Index()

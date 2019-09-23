@@ -31,6 +31,8 @@ namespace Capstone.Models
         public DbSet<ReadingListModel> ReadingListModels { get; set; }
         public DbSet<GroupMembersModel> Groupmembers { get; set; }
         public DbSet<File> Files { get; set; }
+        public DbSet<AssignedBook> AssignedBook { get; set; }
+        //public DbSet<Comment> Comment { get; set; }
 
 
 

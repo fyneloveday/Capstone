@@ -427,8 +427,13 @@
     <Compile Include="Migrations\201906042127044_AssignedGroupRole.Designer.cs">
       <DependentUpon>201906042127044_AssignedGroupRole.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909232054351_AssignedBookModel.cs" />
+    <Compile Include="Migrations\201909232054351_AssignedBookModel.Designer.cs">
+      <DependentUpon>201909232054351_AssignedBookModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AssignedBook.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
     <Compile Include="Models\BookEntryModel.cs" />
     <Compile Include="Models\CurrentlyReadingModel.cs" />
@@ -565,6 +570,7 @@
     <Content Include="Views\Member\MyGroup.cshtml" />
     <Content Include="Views\GroupAdmin\MembersToDelete.cshtml" />
     <Content Include="Views\Member\GroupsCreated.cshtml" />
+    <Content Include="Views\GroupAdmin\AdminIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -750,6 +756,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906042127044_AssignedGroupRole.resx">
       <DependentUpon>201906042127044_AssignedGroupRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909232054351_AssignedBookModel.resx">
+      <DependentUpon>201909232054351_AssignedBookModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
