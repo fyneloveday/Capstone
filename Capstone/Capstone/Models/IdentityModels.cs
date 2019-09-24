@@ -32,7 +32,7 @@ namespace Capstone.Models
         public DbSet<GroupMembersModel> Groupmembers { get; set; }
         public DbSet<File> Files { get; set; }
         public DbSet<AssignedBook> AssignedBook { get; set; }
-        //public DbSet<Comment> Comment { get; set; }
+        public DbSet<Comments> Comment { get; set; }
 
 
 

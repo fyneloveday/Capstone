@@ -48,6 +48,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PusherServer, Version=4.2.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PusherServer.4.2.0\lib\net45\PusherServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -187,6 +190,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BookAPIController.cs" />
+    <Compile Include="Controllers\DiscussionController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\GroupAdminController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -431,11 +435,16 @@
     <Compile Include="Migrations\201909232054351_AssignedBookModel.Designer.cs">
       <DependentUpon>201909232054351_AssignedBookModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201909240028144_CommentModel.cs" />
+    <Compile Include="Migrations\201909240028144_CommentModel.Designer.cs">
+      <DependentUpon>201909240028144_CommentModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AssignedBook.cs" />
     <Compile Include="Models\BookAPIModel.cs" />
     <Compile Include="Models\BookEntryModel.cs" />
+    <Compile Include="Models\Comments.cs" />
     <Compile Include="Models\CurrentlyReadingModel.cs" />
     <Compile Include="Models\File.cs" />
     <Compile Include="Models\GroupMembershipStatus.cs" />
@@ -575,6 +584,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Images\" />
+    <Folder Include="Views\Discussion\" />
     <Folder Include="Views\File\" />
   </ItemGroup>
   <ItemGroup>
@@ -759,6 +769,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201909232054351_AssignedBookModel.resx">
       <DependentUpon>201909232054351_AssignedBookModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201909240028144_CommentModel.resx">
+      <DependentUpon>201909240028144_CommentModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
