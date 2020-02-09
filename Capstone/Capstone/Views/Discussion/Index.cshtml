@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.ReadingAssignment)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Body)
+            @Html.DisplayNameFor(model => model.Author)
         </th>
         <th></th>
     </tr>
@@ -27,7 +27,7 @@
                 @Html.DisplayFor(modelItem => item.ReadingAssignment)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Body)
+                @Html.DisplayFor(modelItem => item.Author)
             </td>
             <td>
                 @Html.ActionLink("Details", "Details", new { id = item.Id }) |

@@ -4,7 +4,7 @@
     ViewBag.Title = "Details";
 }
 
-@*<h2>Details</h2>
+<h2>Details</h2>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.4/vue.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.16.2/axios.min.js"></script>
@@ -19,11 +19,10 @@
         border-bottom: 1px dotted #ccc;
     }
 </style>
-<h2>Details</h2>
 <div id="app">
     <div>
-        <h4>BlogPost</h4>
-        <hr />
+        
+       
         <dl class="dl-horizontal">
             <dt>
                 @Html.DisplayNameFor(model => model.ReadingAssignment)
@@ -41,24 +40,30 @@
                 @Html.DisplayFor(model => model.Body)
             </dd>
 
-        </dl>*@
+        </dl>
     </div>
+
+
+
     <div class="container">
         <div class="row">
             <div class="col-md-8">
                 <div class="page-header">
-                    <h1> Comments </h1>
+                    <h1><small class="pull-right">{{comments.length}} comments</small> Comments </h1>
                 </div>
                 <div class="comments-list">
                     <div class="media" v-for="com in comments">
                         <div class="media-body">
-                            
+                            <h4 class="media-heading user_name">{{com.Name}}</h4>
+                            {{com.Body}}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
     <div class="container">
         <br />
         <p>Your Comment</p>
